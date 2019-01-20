@@ -12,6 +12,7 @@
     <script src="js/jquery/jquery-3.3.1.min.js"></script>
     <script src="js/jquery/jquery.csv.min.js"></script>
     <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet.browser.print.min.js"></script>
     <script src="js/leaflet/leaflet.shp.js"></script>
     <script src="js/leaflet/leaflet.shpfile.js"></script>
     <script src="js/leaflet/leaflet.spin.min.js"></script>
@@ -19,8 +20,7 @@
     <script src="js/spin/spin.js"></script>
     <!-- polyfill for IE -->
     <script src="js/polyfills/array.find.js"></script>
-    <!-- polyfills for Edge -->
-    <script src="js/polyfills/encoding-indexes.js"></script>
+    <!-- polyfill for Edge -->
     <script src="js/polyfills/encoding.js"></script>
   </head>
   <body>
@@ -55,9 +55,17 @@
       }
 
       $(function() {
+        // init tile layer
         initTileLayer();
+
+        // create map
         createMap();
+
+        // init first map
         new CampsMap().init();
+
+        // add an icon to print the map
+        L.control.browserPrint(browserPrintConfig.options).addTo(map);
       });
     </script>
   </body>

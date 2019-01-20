@@ -79,11 +79,6 @@ CampsMap.prototype.highlightFeature = function (e) {
   CampsMap.prototype.infoUpdate(layer.feature.properties);
 }
 
-CampsMap.prototype.resetFeature = function(e) {
-  features.resetStyle(e.target);
-  info.update();
-}
-
 CampsMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   info._div.innerHTML = "<h4>Nombre de camps par département</h4>" 

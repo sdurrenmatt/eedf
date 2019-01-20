@@ -27,3 +27,16 @@ const spinConfig = {
     position: "absolute" // Element positioning
   }
 };
+
+// BrowserPrint
+const browserPrintConfig = {
+    options: {
+      title: "Imprimer",
+      closePopupsOnPrint: false,
+      printModes: [
+        L.control.browserPrint.mode.custom("Sélection"),
+        L.control.browserPrint.mode.landscape("Paysage"),
+        L.control.browserPrint.mode.portrait("Portrait")
+      ]
+    }
+};
