@@ -11,30 +11,30 @@ var camps;
 CampsMap.prototype.addFeatures = function() {
   // load camps data
   camps = $.csv.toObjects(data.csv.camps);
-	// load departments data
-	features = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
-		onEachFeature: this.onEachDepartment,
-		style: this.styleDepartment
-	});
+  // load departments data
+  features = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+    onEachFeature: this.onEachDepartment,
+    style: this.styleDepartment
+  });
   features.addTo(map);
 }
 
 CampsMap.prototype.onEachDepartment = function(department, layer) {
   // find number of camps in department
   var departmentCamps = camps.find(function(camp) { return camp["code_insee"] === department.properties["code_insee"]; });
-	if (departmentCamps && departmentCamps["total"] !== "0") {
+  if (departmentCamps && departmentCamps["total"] !== "0") {
     // display eedf and total camps in a tooltip
-		layer.bindTooltip("☘ " + departmentCamps["eedf"] + "  |  " + departmentCamps["total"], {
-		  permanent: true, 
-		  direction: "center",
-		  className: "total-labels"
-		});
+    layer.bindTooltip("☘ " + departmentCamps["eedf"] + "  |  " + departmentCamps["total"], {
+      permanent: true, 
+      direction: "center",
+      className: "total-labels"
+    });
     // add listeners on layer
     layer.on({
       mouseover: CampsMap.prototype.highlightFeature,
       mouseout: CampsMap.prototype.resetFeature
     });
-	}
+  }
 }
 
 CampsMap.prototype.styleDepartment = function(department) {
