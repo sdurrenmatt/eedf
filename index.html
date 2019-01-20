@@ -8,217 +8,57 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/eedf.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.csv.min.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="js/leaflet.shp.js"></script>
-    <script src="js/leaflet.shpfile.js"></script>
-    <script src="js/rainbowvis.js"></script>
+    <link rel="stylesheet" href="css/spin.css">
+    <script src="js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery/jquery.csv.min.js"></script>
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet.shp.js"></script>
+    <script src="js/leaflet/leaflet.shpfile.js"></script>
+    <script src="js/leaflet/leaflet.spin.min.js"></script>
+    <script src="js/rainbowvis/rainbowvis.js"></script>
+    <script src="js/spin/spin.js"></script>
     <!-- polyfill for IE -->
-    <script src="js/array.find.js"></script>
+    <script src="js/polyfills/array.find.js"></script>
     <!-- polyfills for Edge -->
-    <script src="js/encoding-indexes.js"></script>
-    <script src="js/encoding.js"></script>
+    <script src="js/polyfills/encoding-indexes.js"></script>
+    <script src="js/polyfills/encoding.js"></script>
   </head>
   <body>
     <div id="map"></div>
-    <script>
-      // read totals from csv
-      var totalsCsv = "DEPARTEMENT,NB TOTAL,CPN,CPNB,CPNV,CENTRE,TERRAIN,LOCATION,EXT,FERME,CAMPING,MAIRIE,SGDF,COLONIE\n"
-        + "01,1,0,0,0,1,0,0,0,0,0,0,0,0\n"
-        + "02,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "03,3,0,0,0,1,0,2,0,0,0,0,0,0\n"
-        + "04,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "05,2,0,0,0,0,0,1,0,0,0,0,0,1\n"
-        + "06,1,0,0,0,1,0,0,0,0,0,0,0,0\n"
-        + "07,2,0,0,0,0,0,0,0,0,0,2,0,0\n"
-        + "08,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "09,4,0,0,0,0,0,0,4,0,0,0,0,0\n"
-        + "10,3,0,0,0,3,0,0,0,0,0,0,0,0\n"
-        + "11,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "12,9,0,5,0,0,0,0,4,0,0,0,0,0\n"
-        + "13,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "14,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "15,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "16,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "17,1,0,0,0,0,0,0,0,0,1,0,0,0\n"
-        + "18,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "19,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "20,1,0,0,0,0,0,0,0,1,0,0,0,0\n"
-        + "21,3,0,0,0,3,0,0,0,0,0,0,0,0\n"
-        + "22,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "23,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "24,3,0,0,0,1,0,0,2,0,0,0,0,0\n"
-        + "25,3,0,0,0,0,1,1,0,0,1,0,0,0\n"
-        + "26,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "27,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "28,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "29,2,0,0,0,0,1,0,0,1,0,0,0,0\n"
-        + "30,5,0,0,0,0,0,0,3,0,1,0,1,0\n"
-        + "31,3,0,0,0,0,0,0,2,0,0,0,1,0\n"
-        + "32,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "33,2,0,0,0,0,0,0,2,0,0,0,0,0\n"
-        + "34,6,0,0,0,0,0,0,6,0,0,0,0,0\n"
-        + "35,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "36,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "37,1,0,0,0,1,0,0,0,0,0,0,0,0\n"
-        + "38,2,0,0,0,0,0,0,1,0,0,1,0,0\n"
-        + "39,1,0,0,0,0,0,0,0,0,1,0,0,0\n"
-        + "40,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "41,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "42,1,0,0,0,1,0,0,0,0,0,0,0,0\n"
-        + "43,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "44,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "45,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "46,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "47,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "48,2,0,0,0,1,0,0,1,0,0,0,0,0\n"
-        + "49,2,0,0,0,0,1,0,1,0,0,0,0,0\n"
-        + "50,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "51,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "52,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "53,2,0,0,0,0,0,0,1,1,0,0,0,0\n"
-        + "54,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "55,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "56,5,0,0,0,1,0,0,2,0,0,1,1,0\n"
-        + "57,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "58,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "59,8,7,0,0,0,0,0,0,1,0,0,0,0\n"
-        + "60,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "61,1,0,0,0,0,0,0,0,1,0,0,0,0\n"
-        + "62,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "63,6,5,0,0,0,0,0,0,0,0,1,0,0\n"
-        + "64,2,0,0,0,0,0,0,0,0,2,0,0,0\n"
-        + "65,2,0,1,0,1,0,0,0,0,0,0,0,0\n"
-        + "66,3,0,0,2,0,0,0,0,0,0,0,1,0\n"
-        + "67,2,0,0,0,0,0,0,2,0,0,0,0,0\n"
-        + "68,1,0,0,0,0,0,0,0,0,0,0,1,0\n"
-        + "69D,2,0,0,0,2,0,0,0,0,0,0,0,0\n"
-        + "70,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "71,3,0,0,0,0,0,0,3,0,0,0,0,0\n"
-        + "72,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "73,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "74,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "75,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "76,2,0,0,0,0,0,0,0,2,0,0,0,0\n"
-        + "77,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "78,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "79,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "80,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "81,13,0,0,0,11,0,0,0,1,1,0,0,0\n"
-        + "82,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "83,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "84,1,0,0,0,1,0,0,0,0,0,0,0,0\n"
-        + "85,1,0,0,0,0,0,0,1,0,0,0,0,0\n"
-        + "86,4,0,0,0,3,0,0,0,0,1,0,0,0\n"
-        + "87,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "88,3,3,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "89,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "90,1,1,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "91,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "92,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "93,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "94,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "95,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "96,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "97,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "98,0,0,0,0,0,0,0,0,0,0,0,0,0\n"
-        + "99,0,0,0,0,0,0,0,0,0,0,0,0,0\n";
-      var totals = $.csv.toObjects(totalsCsv);
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/maps/eedf.js"></script>
+    <script src="js/maps/camps.js"></script>
+    <script type="text/javascript">
+      var tileLayer,
+        map,
+        features,
+        info;
 
-      // get custom tile layer
-      var layer = L.tileLayer("{urlTemplate}/{z}/{x}/{y}?access_token={accessToken}", {
-        urlTemplate: "https://api.mapbox.com/styles/v1/sdurrenmath/cjqzpwamk0kyx2sqv5zguw9zq/tiles",
-        accessToken: "pk.eyJ1Ijoic2R1cnJlbm1hdGgiLCJhIjoiY2pxeTdpMjk2MDBqcDRhbXk0bzYzYXVhNyJ9.IFLnN_RQmycBsiu6SAK3eA",
-      });
-
-      // create map
-      var map = L.map("map", {
-        minZoom: 6,
-        maxZoom: 7,
-        zoomDelta: 0.25,
-        zoomSnap: 0
-      });
-      map.setView([47, 2], 6.5)
-      map.addLayer(layer);
-
-      // add departments
-      var departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
-        onEachFeature: function(department, layer) {
-          // add totals
-          var departmentTotals = totals.find(function(element) { return element["DEPARTEMENT"] === department.properties["code_insee"]; });
-          if (departmentTotals && departmentTotals["NB TOTAL"] !== "0") {
-            layer.bindTooltip("&#x2618;&nbsp;" + departmentTotals["CENTRE"] + "&nbsp;&nbsp;|&nbsp;&nbsp;" + departmentTotals["NB TOTAL"], {
-              permanent: true, 
-              direction: "center",
-              className: "total-labels"
-            });
-          }
-          // add listeners on layer
-          layer.on({
-            mouseover: highlightDepartment,
-            mouseout: resetDepartment
-          });
-        },
-        style: function(department) {
-          var departmentTotals = totals.find(function(element) { return element["DEPARTEMENT"] === department.properties["code_insee"]; });
-          var minNumber = Math.min.apply(Math, totals.map(function(o) { return o["NB TOTAL"]; }));
-          var maxNumber = Math.max.apply(Math, totals.map(function(o) { return o["NB TOTAL"]; }));
-          var rainbow = new Rainbow()
-            .setSpectrum("#FFF0BC", "#C72C48")
-            .setNumberRange(minNumber, maxNumber);
-          if (!departmentTotals) {
-            // no data
-            return {
-              color: "#AFAFAF", 
-              weight: 1, 
-              fillOpacity: 0.25
-            }; 
-          }
-          if (departmentTotals["NB TOTAL"] === "0") {
-            // zero camp
-            return {
-              color: "#AFAFAF", 
-              weight: 2, 
-              fillOpacity: 0.5
-            }; 
-          }
-          // at least one camp
-          return {
-            color: "#" + rainbow.colourAt(departmentTotals["NB TOTAL"]), 
-            weight: 2, 
-            fillOpacity: 0.75
-          };
-        }
-      });
-      departments.addTo(map);
-
-      // add info
-      var info = L.control();
-      info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info');
-        this.update();
-        return this._div;
-      };
-      info.update = function (properties) {
-          this._div.innerHTML = "<h4>Nombre de camps par département</h4>" 
-            + (properties ? properties["code_insee"] + "&nbsp;" + properties["nom"] : "&#x2618;&nbsp;EEDF&nbsp;&nbsp;|&nbsp;&nbsp;Total");
-      };
-      info.addTo(map);
-
-      function highlightDepartment(e) {
-        var layer = e.target;
-        layer.setStyle({
-          fillOpacity: 1
+      function initTileLayer() {
+        // Mapbox custom tile layer
+        tileLayer = L.tileLayer("{urlTemplate}/{z}/{x}/{y}?access_token={accessToken}", {
+          urlTemplate: mapboxConfig.urlTemplate,
+          accessToken: mapboxConfig.accessToken
         });
-        info.update(layer.feature.properties);
       }
 
-      function resetDepartment(e) {
-        departments.resetStyle(e.target);
-        info.update();
+      function createMap() {
+        map = L.map("map", {
+          minZoom: 6,
+          maxZoom: 7,
+          zoomDelta: 0.25,
+          zoomSnap: 0
+        });
+        map.setView([47, 2], 6.5); // France GPS coordinates
+        map.addLayer(tileLayer);
       }
+
+      $(function() {
+        initTileLayer();
+        createMap();
+        new CampsMap().init();
+      });
     </script>
   </body>
 </html>
