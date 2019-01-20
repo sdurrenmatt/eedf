@@ -1,8 +1,8 @@
 function EEDFMap() {}
 
-EEDFMap.prototype.init = function() {
+EEDFMap.prototype.load = function() {
   this.createLoader();
-  this.addFeatures();
+  this.loadFeatures();
   this.deactivateLoader();
   this.addInfo();
 }
@@ -11,19 +11,19 @@ EEDFMap.prototype.createLoader = function() {
   map.spin(true, spinConfig.options);
 }
 
-EEDFMap.prototype.addFeatures = function() {}
+EEDFMap.prototype.loadFeatures = function() {}
 
 EEDFMap.prototype.deactivateLoader = function() {
-  features.on("data:loaded", function() {
+  features[viewId].on("data:loaded", function() {
     map.spin(false);
   });
 }
 
 EEDFMap.prototype.addInfo = function() {
-  info = L.control();
-  info.onAdd = this.infoOnAdd;
-  info.update = this.infoUpdate;
-  info.addTo(map);
+    infos[viewId] = L.control();
+    infos[viewId].onAdd = this.infoOnAdd;
+    infos[viewId].update = this.infoUpdate;
+    infos[viewId].addTo(map);
 }
 
 EEDFMap.prototype.infoOnAdd = function(map) {
@@ -38,10 +38,10 @@ EEDFMap.prototype.infoUpdate = function(properties) {
 
 EEDFMap.prototype.highlightFeature = function(e) {
   var layer = e.target;
-  info.update(layer.feature.properties);
+  infos[viewId].update(layer.feature.properties);
 }
 
 EEDFMap.prototype.resetFeature = function(e) {
-  features.resetStyle(e.target);
-  info.update();
+  features[viewId].resetStyle(e.target);
+  infos[viewId].update();
 }

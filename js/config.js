@@ -32,7 +32,7 @@ const spinConfig = {
 const browserPrintConfig = {
     options: {
       title: "Imprimer",
-      closePopupsOnPrint: false,
+      position: "bottomleft",
       printModes: [
         L.control.browserPrint.mode.custom("Sélection"),
         L.control.browserPrint.mode.landscape("Paysage"),

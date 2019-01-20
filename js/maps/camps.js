@@ -8,15 +8,14 @@ CampsMap.prototype = Object.create(EEDFMap.prototype, {
 
 var camps;
 
-CampsMap.prototype.addFeatures = function() {
+CampsMap.prototype.loadFeatures = function() {
   // load camps data
   camps = $.csv.toObjects(data.csv.camps);
   // load departments data
-  features = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+  features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
     style: this.styleDepartment
   });
-  features.addTo(map);
 }
 
 CampsMap.prototype.onEachDepartment = function(department, layer) {
@@ -81,6 +80,6 @@ CampsMap.prototype.highlightFeature = function (e) {
 
 CampsMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  info._div.innerHTML = "<h4>Nombre de camps par département</h4>" 
+  infos[viewId]._div.innerHTML = "<h4>Nombre de camps par département</h4>" 
     + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total");
 }
