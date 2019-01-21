@@ -1,6 +1,41 @@
 var data = {};
 data.csv = {};
 
+// Camps bénévoles / CPN
+data.csv.centres = "code_insee,nom,type\n"
+  + "01104,Le Planet,CENTRE\n"
+  + "03081,La Merlerie,CENTRE\n"
+  + "05079,Le Fontenil,CENTRE\n"
+  + "06019,Blausasc,CENTRE\n"
+  + "06116,St Auban,CENTRE\n"
+  + "10029,Balnot,CENTRE\n"
+  + "12131,Bécours,CENTRE\n"
+  + "13001,Coûteron,CENTRE\n"
+  + "17140,Dolus d'Oléron,CENTRE\n"
+  + "21017,Arcenant,CENTRE\n"
+  + "24183,Moulin de Lavaure,CENTRE\n"
+  + "29001,Argol,CENTRE\n"
+  + "35334,Le Bec Rond,CENTRE\n"
+  + "37132,Puits Bertin,CENTRE\n"
+  + "42039,Chalmazel,CENTRE\n"
+  + "42292,Les Révotes,CENTRE\n"
+  + "48132,Le Franquet,CENTRE\n"
+  + "56162,Kerva,CENTRE\n"
+  + "65017,Fabian,CENTRE\n"
+  + "65078,Lesponne,CENTRE\n"
+  + "67191,Herbitzheim,CENTRE\n"
+  + "69164,Ranchal,CENTRE\n"
+  + "81201,Foucheval,CENTRE\n"
+  + "84110,St Léger du Ventoux,CENTRE\n"
+  + "85166,Fief Guesdon,CENTRE\n"
+  + "86024,Boussais,CENTRE\n"
+  + "86203,Queaux,CENTRE\n"
+  + "59416,Morbecque,CPN\n"
+  + "73306,Valloire,CPN\n"
+  + "63463,La Planche,CPN\n"
+  + "88415,Les Tronches,CPN\n"
+  + "90041,Etueffont,CPN";
+
 // Camps
 data.csv.camps = "code_insee,eedf,total\n"
   + "01,1,1\n"

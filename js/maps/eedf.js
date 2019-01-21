@@ -3,8 +3,8 @@ function EEDFMap() {}
 EEDFMap.prototype.load = function() {
   this.createLoader();
   this.loadFeatures();
+  this.loadInfo();
   this.deactivateLoader();
-  this.addInfo();
 }
 
 EEDFMap.prototype.createLoader = function() {
@@ -15,15 +15,15 @@ EEDFMap.prototype.loadFeatures = function() {}
 
 EEDFMap.prototype.deactivateLoader = function() {
   features[viewId].on("data:loaded", function() {
+    features[viewId].addTo(map);
     map.spin(false);
   });
 }
 
-EEDFMap.prototype.addInfo = function() {
+EEDFMap.prototype.loadInfo = function() {
     infos[viewId] = L.control();
     infos[viewId].onAdd = this.infoOnAdd;
     infos[viewId].update = this.infoUpdate;
-    infos[viewId].addTo(map);
 }
 
 EEDFMap.prototype.infoOnAdd = function(map) {

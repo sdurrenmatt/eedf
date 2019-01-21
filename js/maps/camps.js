@@ -26,7 +26,7 @@ CampsMap.prototype.onEachDepartment = function(department, layer) {
     layer.bindTooltip("☘ " + departmentCamps["eedf"] + "  |  " + departmentCamps["total"], {
       permanent: true, 
       direction: "center",
-      className: "total-labels"
+      className: "total-label"
     });
     // add listeners on layer
     layer.on({
@@ -65,7 +65,7 @@ CampsMap.prototype.styleDepartment = function(department) {
   return {
     color: "#" + rainbow.colourAt(departmentCamps["total"]), 
     weight: 2, 
-    fillOpacity: 0.75
+    fillOpacity: 0.85
   };
 }
 
@@ -80,6 +80,6 @@ CampsMap.prototype.highlightFeature = function (e) {
 
 CampsMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  infos[viewId]._div.innerHTML = "<h4>Nombre de camps par département</h4>" 
+  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsMap"] + "</h4>"
     + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total");
 }

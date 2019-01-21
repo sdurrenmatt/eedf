@@ -1,6 +1,6 @@
 // Mapbox
 const mapboxConfig = {
-  urlTemplate: "https://api.mapbox.com/styles/v1/sdurrenmath/cjqzpwamk0kyx2sqv5zguw9zq/tiles",
+  urlTemplate: "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles",
   accessToken: "pk.eyJ1Ijoic2R1cnJlbm1hdGgiLCJhIjoiY2pxeTdpMjk2MDBqcDRhbXk0bzYzYXVhNyJ9.IFLnN_RQmycBsiu6SAK3eA"
 };
 
@@ -28,15 +28,8 @@ const spinConfig = {
   }
 };
 
-// BrowserPrint
-const browserPrintConfig = {
-    options: {
-      title: "Imprimer",
-      position: "bottomleft",
-      printModes: [
-        L.control.browserPrint.mode.custom("Sélection"),
-        L.control.browserPrint.mode.landscape("Paysage"),
-        L.control.browserPrint.mode.portrait("Portrait")
-      ]
-    }
+// Map titles
+const titles = {
+  "CentresMap": "Centres bénévoles et CPN",
+  "CampsMap": "Nombre de camps par département"
 };

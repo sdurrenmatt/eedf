@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/css?family=Varela+Round");
 
 body {
@@ -12,7 +13,41 @@ body {
   width: 100%;
 }
 
-.leaflet-tooltip.total-labels {
+.centre-popup > .leaflet-popup-content-wrapper {
+  border-radius: 0;
+}
+
+.leaflet-popup-content > h4 {
+  font: 14px "Varela Round", sans-serif;
+  font-weight: bold;
+  color: #777;
+}
+
+p[class^="centre-"] {
+  padding: 5px;
+  font: 12px "Open Sans", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+p.centre-CENTRE {
+  width: 120px;
+  background-color: #72b026;
+}
+
+p.centre-CPN {
+  width: 30px;
+  background-color: #000;
+}
+
+p.town {
+  font: 12px "Open Sans", sans-serif;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.leaflet-tooltip.total-label {
   background-color: transparent;
   border: transparent;
   box-shadow: none;
@@ -32,6 +67,11 @@ body {
 }
 
 .info h4 {
+  margin: 5px;
+  color: #777;
+}
+
+.info h4.title {
   margin: 0 0 5px;
   color: #777;
 }
