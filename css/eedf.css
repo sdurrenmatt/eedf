@@ -108,10 +108,11 @@ p.town {
   color: rgba(0, 0, 0, 0.75);
 }
 
-.trainings-tooltip {
+.trainings-tooltip, .holidays-tooltip {
   background-color: transparent;
   border: transparent;
   box-shadow: none;
+  text-align: center;
 }
 
 .bafa {
@@ -122,24 +123,22 @@ p.town {
   color: rgb(130, 26, 129);
 }
 
-.bafa-tooltip {
+.bafa-tooltip, .stays-tooltip {
   padding: 5px;
   border: 2px solid black;
   border-radius: 5px 5px 0 0;
-  background-color: rgba(232, 75, 4, 0.75);
   font-family: "Varela Round", sans-serif;
   font-size: x-small;
   font-weight: bolder;
   color: white;
 }
 
-.bafd-tooltip {
+.bafd-tooltip, .vacationers-tooltip {
   padding: 5px;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
   border-radius: 0 0 5px 5px;
-  background-color: rgba(130, 26, 129, 0.75);
   font-family: "Varela Round", sans-serif;
   font-size: x-small;
   font-weight: bolder;
@@ -147,7 +146,23 @@ p.town {
   z-index: 42;
 }
 
-.trainees-legend {
+.bafa-tooltip {
+  background-color: rgba(232, 75, 4, 0.75);
+}
+
+.bafd-tooltip {
+  background-color: rgba(130, 26, 129, 0.75);
+}
+
+.stays-tooltip {
+  background-color: rgba(0, 51, 102, 0.75);
+}
+
+.vacationers-tooltip {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.trainees-legend, .vacationers-legend {
   line-height: 18px;
   background-image: linear-gradient(to right, #FFF0BC, #C72C48);
   width: 50px;

@@ -35,6 +35,7 @@
     <script src="js/maps/centres.js"></script>
     <script src="js/maps/camps.js"></script>
     <script src="js/maps/bafa.js"></script>
+    <script src="js/maps/holiday.js"></script>
     <script type="text/javascript">
       var tileLayer,
         map,
@@ -77,9 +78,13 @@
           selectMap("CampsMap");
         }, titles["CampsMap"]).addTo(map);
         // Stages par centre
-        L.easyButton("<strong>B</strong>", function() {
+        L.easyButton("fa-chalkboard-teacher", function() {
           selectMap("BafaMap");
         }, titles["BafaMap"]).addTo(map);
+        // Séjours par centre
+        L.easyButton("fa-sun", function() {
+          selectMap("HolidayMap");
+        }, titles["HolidayMap"]).addTo(map);
       }
 
       function removeLayers() {
@@ -138,7 +143,7 @@
         addIcons();
 
         // default selection
-        selectMap("CentresMap");
+        selectMap("HolidayMap");
       });
     </script>
   </body>

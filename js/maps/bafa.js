@@ -1,8 +1,8 @@
 function BafaMap() { 
-  CentresMap.call(this);
+  EEDFMap.call(this);
 }
 
-BafaMap.prototype = Object.create(CentresMap.prototype, {
+BafaMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: BafaMap }
 });
 
@@ -57,14 +57,14 @@ BafaMap.prototype.styleDepartment = function(department) {
     }; 
   }
   if (departmentTrainees["total"] === "0") {
-    // zero camp
+    // zero trainee
     return {
       color: "#AFAFAF", 
       weight: 2, 
       fillOpacity: 0.5
     }; 
   }
-  // at least one camp
+  // at least one trainee
   return {
     color: "#" + rainbow.colourAt(departmentTrainees["total"]), 
     weight: 2, 
@@ -108,6 +108,13 @@ BafaMap.prototype.onEachTown = function(town, layer) {
       className: "trainings-tooltip"
     });
   }
+}
+
+BafaMap.prototype.styleTown = function(town) {
+  return {
+    stroke: false,
+    fill: false
+  };
 }
 
 BafaMap.prototype.highlightFeature = function(e) {
