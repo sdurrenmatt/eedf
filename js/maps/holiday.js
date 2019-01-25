@@ -89,8 +89,7 @@ HolidayMap.prototype.onEachTown = function(town, layer) {
     // display stays and vacationers in a tooltip
     layer.bindTooltip("<div class='stays-tooltip'><i class='fas fa-sun'></i> " + townHolidays["sejours"] + "</div><div class='vacationers-tooltip'><i class='fas fa-male'></i> " + townHolidays["vacanciers"] + "</div>", {
       permanent: true,
-      direction: direction,
-      className: "holidays-tooltip"
+      direction: direction
     });
   }
 }

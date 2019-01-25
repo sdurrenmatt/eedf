@@ -232,7 +232,7 @@ data.csv.trainees = "code_insee,total\n"
   + "93,0\n"
   + "94,8\n"
   + "95,0";
-// BAFA / BAFD
+// Trainings
 data.csv.trainings = "code_insee,bafa,bafd\n"
   + "01104,0,0\n"
   + "03081,0,0\n"
@@ -395,7 +395,7 @@ data.csv.holidays = "code_insee,sejours,vacanciers\n"
   + "88415,1,31\n"
   + "90041,0,0";
 // Camps and children by centre
-data.csv.campsAndChildren = "code_insee,camps,enfants\n"
+data.csv.campsChildrenCentre = "code_insee,camps,enfants\n"
   + "01104,1,16\n"
   + "03081,1,79\n"
   + "05079,0,0\n"
@@ -424,7 +424,7 @@ data.csv.campsAndChildren = "code_insee,camps,enfants\n"
   + "86024,0,0\n"
   + "86203,2,87";
 // Camps and children by department
-data.csv.campsAndChildren2 = "code_insee,enfants,camps\n"
+data.csv.campsChildrenDepartment = "code_insee,enfants,camps\n"
   + "01,16,1\n"
   + "02,0,0\n"
   + "03,171,3\n"
@@ -522,6 +522,40 @@ data.csv.campsAndChildren2 = "code_insee,enfants,camps\n"
   + "93,0,0\n"
   + "94,0,0\n"
   + "95,0,0";
+// Camps, trainings and holidays
+data.csv.campsTrainingsHolidays = "code_insee,camps,bafa,bafd,sejours\n"
++ "01104,1,0,0,0\n"
++ "03081,1,0,0,0\n"
++ "05079,0,0,0,1\n"
++ "06019,0,0,0,0\n"
++ "06116,1,0,0,0\n"
++ "10029,3,0,0,0\n"
++ "12131,6,0,2,2\n"
++ "13001,0,1,0,0\n"
++ "17140,0,0,0,0\n"
++ "21017,3,0,0,0\n"
++ "24183,1,1,0,1\n"
++ "29001,1,0,0,1\n"
++ "35334,0,1,1,3\n"
++ "37132,1,0,0,0\n"
++ "42039,1,0,0,0\n"
++ "42230,0,0,0,0\n"
++ "48132,1,0,0,0\n"
++ "56162,1,1,0,0\n"
++ "65017,1,0,0,0\n"
++ "65078,1,0,0,0\n"
++ "67191,0,0,0,0\n"
++ "69164,2,1,1,0\n"
++ "81201,10,1,0,0\n"
++ "84110,1,0,0,0\n"
++ "85166,0,0,0,0\n"
++ "86024,0,1,0,0\n"
++ "86203,3,0,0,0\n"
++ "59416,7,11,2,1\n"
++ "73306,0,0,0,1\n"
++ "63463,5,3,0,2\n"
++ "88415,3,2,0,1\n"
++ "90041,1,0,0,0";
 // load data
 var centres = $.csv.toObjects(data.csv.centres);
 var camps = $.csv.toObjects(data.csv.camps);
@@ -529,5 +563,6 @@ var trainees = $.csv.toObjects(data.csv.trainees);
 var trainings = $.csv.toObjects(data.csv.trainings);
 var vacationers = $.csv.toObjects(data.csv.vacationers);
 var holidays = $.csv.toObjects(data.csv.holidays);
-var campsAndChildren = $.csv.toObjects(data.csv.campsAndChildren);
-var campsAndChildren2 = $.csv.toObjects(data.csv.campsAndChildren2);
+var campsChildrenCentre = $.csv.toObjects(data.csv.campsChildrenCentre);
+var campsChildrenDepartment = $.csv.toObjects(data.csv.campsChildrenDepartment);
+var campsTrainingsHolidays = $.csv.toObjects(data.csv.campsTrainingsHolidays);

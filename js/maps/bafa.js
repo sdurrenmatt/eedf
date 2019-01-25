@@ -86,8 +86,7 @@ BafaMap.prototype.onEachTown = function(town, layer) {
     // display bafa and bafd trainings in a tooltip
     layer.bindTooltip("<div class='bafa-tooltip'>" + townTrainings["bafa"] + "</div><div class='bafd-tooltip'>" + townTrainings["bafd"] + "</div>", {
       permanent: true,
-      direction: "right",
-      className: "trainings-tooltip"
+      direction: "right"
     });
   }
 }

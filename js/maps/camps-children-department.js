@@ -1,12 +1,12 @@
-function CampsAndChildren2Map() { 
+function CampsChildrenDepartmentMap() { 
   EEDFMap.call(this);
 }
 
-CampsAndChildren2Map.prototype = Object.create(EEDFMap.prototype, {
-  constructor: { value: CampsAndChildren2Map }
+CampsChildrenDepartmentMap.prototype = Object.create(EEDFMap.prototype, {
+  constructor: { value: CampsChildrenDepartmentMap }
 });
 
-CampsAndChildren2Map.prototype.loadFeatures = function() {
+CampsChildrenDepartmentMap.prototype.loadFeatures = function() {
   // load departments data
   features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
@@ -14,9 +14,9 @@ CampsAndChildren2Map.prototype.loadFeatures = function() {
   });
 }
 
-CampsAndChildren2Map.prototype.onEachDepartment = function(department, layer) {
+CampsChildrenDepartmentMap.prototype.onEachDepartment = function(department, layer) {
   // find number of camps and children in department
-  var departmentCampsAndChildren = campsAndChildren2.find(function(element) { return element["code_insee"] === department.properties["code_insee"]; });
+  var departmentCampsAndChildren = campsChildrenDepartment.find(function(element) { return element["code_insee"] === department.properties["code_insee"]; });
   if (departmentCampsAndChildren && departmentCampsAndChildren["camps"] !== "0") {
     // display camps and children in a tooltip
     layer.bindTooltip("<i class='fas fa-campground'></i> " + departmentCampsAndChildren["camps"] + "<br><i class='fas fa-child'></i> " + departmentCampsAndChildren["enfants"], {
@@ -27,16 +27,16 @@ CampsAndChildren2Map.prototype.onEachDepartment = function(department, layer) {
   }
   // add listeners on layer
   layer.on({
-    mouseover: CampsAndChildren2Map.prototype.highlightFeature,
-    mouseout: CampsAndChildren2Map.prototype.resetFeature
+    mouseover: CampsChildrenDepartmentMap.prototype.highlightFeature,
+    mouseout: CampsChildrenDepartmentMap.prototype.resetFeature
   });
 }
 
-CampsAndChildren2Map.prototype.styleDepartment = function(department) {
+CampsChildrenDepartmentMap.prototype.styleDepartment = function(department) {
   // find number of children in department
-  var departmentCampsAndChildren = campsAndChildren2.find(function(element) { return element["code_insee"] === department.properties["code_insee"]; });
-  var minNumber = Math.min.apply(Math, campsAndChildren2.map(function(element) { return element["enfants"]; }));
-  var maxNumber = Math.max.apply(Math, campsAndChildren2.map(function(element) { return element["enfants"]; }));
+  var departmentCampsAndChildren = campsChildrenDepartment.find(function(element) { return element["code_insee"] === department.properties["code_insee"]; });
+  var minNumber = Math.min.apply(Math, campsChildrenDepartment.map(function(element) { return element["enfants"]; }));
+  var maxNumber = Math.max.apply(Math, campsChildrenDepartment.map(function(element) { return element["enfants"]; }));
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")
@@ -65,18 +65,18 @@ CampsAndChildren2Map.prototype.styleDepartment = function(department) {
   };
 }
 
-CampsAndChildren2Map.prototype.highlightFeature = function(e) {
+CampsChildrenDepartmentMap.prototype.highlightFeature = function(e) {
   var layer = e.target;
   // increase opacity to max
   layer.setStyle({
     fillOpacity: 1
   });
-  CampsAndChildren2Map.prototype.infoUpdate(layer.feature.properties);
+  CampsChildrenDepartmentMap.prototype.infoUpdate(layer.feature.properties);
 }
 
-CampsAndChildren2Map.prototype.infoUpdate = function(properties) {
+CampsChildrenDepartmentMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsAndChildren2Map"] + "</h4>"
+  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsChildrenDepartmentMap"] + "</h4>"
     + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants")
     + "<br/><br/>"
     + "Enfants <span class='legend'></span>";;

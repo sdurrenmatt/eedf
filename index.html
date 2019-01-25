@@ -36,8 +36,9 @@
     <script src="js/maps/camps.js"></script>
     <script src="js/maps/bafa.js"></script>
     <script src="js/maps/holiday.js"></script>
-    <script src="js/maps/campsAndChildren.js"></script>
-    <script src="js/maps/campsAndChildren2.js"></script>
+    <script src="js/maps/camps-children-centre.js"></script>
+    <script src="js/maps/camps-children-department.js"></script>
+    <script src="js/maps/camps-trainings-holidays.js"></script>
     <script type="text/javascript">
       var tileLayer,
         map,
@@ -60,7 +61,7 @@
 
       function createMap() {
         map = L.map("map", {
-          minZoom: 6,
+          minZoom: 6.4,
           zoomDelta: 0.2,
           zoomSnap: 0
         });
@@ -89,12 +90,16 @@
         }, titles["HolidayMap"]).addTo(map);
         // Camps et enfants par centre
         L.easyButton("fa-child", function() {
-          selectMap("CampsAndChildrenMap");
-        }, titles["CampsAndChildrenMap"]).addTo(map);
+          selectMap("CampsChildrenCentreMap");
+        }, titles["CampsChildrenCentreMap"]).addTo(map);
         // Camps et enfants par département
         L.easyButton("fa-child", function() {
-          selectMap("CampsAndChildren2Map");
-        }, titles["CampsAndChildren2Map"]).addTo(map);
+          selectMap("CampsChildrenDepartmentMap");
+        }, titles["CampsChildrenDepartmentMap"]).addTo(map);
+        // Camps, stages et séjour par centre
+        L.easyButton("fa-star-of-life", function() {
+          selectMap("CampsTrainingsHolidaysMap");
+        }, titles["CampsTrainingsHolidaysMap"]).addTo(map);
       }
 
       function removeLayers() {
@@ -153,7 +158,7 @@
         addIcons();
 
         // default selection
-        selectMap("CampsAndChildren2Map");
+        selectMap("CentresMap");
       });
     </script>
   </body>

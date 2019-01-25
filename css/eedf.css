@@ -13,6 +13,13 @@ body {
   width: 100%;
 }
 
+.leaflet-tooltip {
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
 .leaflet-tooltip-top:before,
 .leaflet-tooltip-bottom:before,
 .leaflet-tooltip-left:before,
@@ -76,7 +83,7 @@ p.town {
   box-shadow: none;
   border-radius: 0;
   font-family: "Open Sans", sans-serif;
-  font-size: xx-small;
+  font-size: smaller;
   font-weight: bolder;
   color: white;
 }
@@ -100,22 +107,10 @@ p.town {
 }
 
 .totals-tooltip {
-  background-color: transparent;
-  border: transparent;
-  box-shadow: none;
   font-family: "Varela Round", sans-serif;
   font-size: x-small;
   font-weight: bolder;
   color: rgba(0, 0, 0, 0.75);
-}
-
-.trainings-tooltip,
-.holidays-tooltip,
-.campsAndChildren-tooltip {
-  background-color: transparent;
-  border: transparent;
-  box-shadow: none;
-  text-align: center;
 }
 
 .bafa {
@@ -150,7 +145,6 @@ p.town {
   font-size: x-small;
   font-weight: bolder;
   color: white;
-  z-index: 42;
 }
 
 .bafa-tooltip {
@@ -185,4 +179,55 @@ p.town {
   float: left;
   margin-right: 8px;
   opacity: 0.9;
+}
+
+.camps-trainings-holidays-tooltip-1 {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 3px 0 0 3px;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-small;
+  font-size: bolder;
+  background-color: rgba(254, 27, 0, 0.75);
+  color: white;
+}
+
+.camps-trainings-holidays-tooltip-2 {
+  display: inline-block;
+  padding: 3px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-small;
+  font-size: bolder;
+  background-color: rgba(232, 75, 4, 0.75);
+  color: white;
+}
+.camps-trainings-holidays-tooltip-3 {
+  display: inline-block;
+  padding: 3px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-small;
+  font-size: bolder;
+  background-color: rgba(130, 26, 129, 0.75);
+  color: white;
+}
+
+.camps-trainings-holidays-tooltip-4 {
+  display: inline-block;
+  padding: 3px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 0 3px 3px 0;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-small;
+  font-size: bolder;
+  background-color: rgba(0, 51, 102, 0.75);
+  color: white;
 }
