@@ -13,14 +13,37 @@ body {
   width: 100%;
 }
 
-.centre-popup > .leaflet-popup-content-wrapper {
-  border-radius: 0;
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  border: none;
 }
 
-.leaflet-popup-content > h4 {
-  font: 14px "Varela Round", sans-serif;
-  font-weight: bold;
+.info {
+  padding: 6px 8px;
+  font: 16px/18px "Varela Round", sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 5px;
   color: #777;
+}
+
+.info h4.title {
+  margin: 0 0 5px;
+}
+
+.centre-benevole {
+  color: #72b026;
+}
+
+.cpn {
+  color: #000;
 }
 
 p[class^="centre-"] {
@@ -47,48 +70,89 @@ p.town {
   text-transform: uppercase;
 }
 
-.leaflet-tooltip.total-label {
+.centre-tooltip-CENTRE, .centre-tooltip-CPN {
+  border: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: xx-small;
+  font-weight: bolder;
+  color: white;
+}
+
+.centre-tooltip-CENTRE {
+  background-color: rgba(114, 176, 38, 1);
+}
+
+.centre-tooltip-CPN {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.centre-popup > .leaflet-popup-content-wrapper {
+  border-radius: 0;
+}
+
+.leaflet-popup-content > h4 {
+  font: 14px "Varela Round", sans-serif;
+  font-weight: bold;
+  color: #777;
+}
+
+.totals-tooltip {
   background-color: transparent;
   border: transparent;
   box-shadow: none;
   font-family: "Varela Round", sans-serif;
   font-size: x-small;
   font-weight: bolder;
-  color: rgb(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.75);
 }
 
-.info {
-  padding: 6px 8px;
-  font: 16px/18px "Varela Round", sans-serif;
-  background: white;
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+.trainings-tooltip {
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
 }
 
-.info h4 {
-  margin: 5px;
-  color: #777;
+.bafa {
+  color: rgb(232, 75, 4);
 }
 
-.info h4.title {
-  margin: 0 0 5px;
-  color: #777;
+.bafd {
+  color: rgb(130, 26, 129);
 }
 
-.spinner {
-  width: 100%;
-  height: 100%;
+.bafa-tooltip {
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px 5px 0 0;
+  background-color: rgba(232, 75, 4, 0.75);
+  font-family: "Varela Round", sans-serif;
+  font-size: x-small;
+  font-weight: bolder;
+  color: white;
 }
 
-.spinner:before {
-  background-color: purple;
-  top: -50%;
-  left: -50%;
-  border-radius: 5px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: block;
-  content: " ";
+.bafd-tooltip {
+  padding: 5px;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(130, 26, 129, 0.75);
+  font-family: "Varela Round", sans-serif;
+  font-size: x-small;
+  font-weight: bolder;
+  color: white;
+  z-index: 42;
+}
+
+.trainees-legend {
+  line-height: 18px;
+  background-image: linear-gradient(to right, #FFF0BC, #C72C48);
+  width: 50px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.9;
 }

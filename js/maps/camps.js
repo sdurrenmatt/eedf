@@ -1,16 +1,12 @@
 function CampsMap() { 
-  EEDFMap.call(this); 
+  EEDFMap.call(this);
 }
 
 CampsMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: CampsMap }
 });
 
-var camps;
-
 CampsMap.prototype.loadFeatures = function() {
-  // load camps data
-  camps = $.csv.toObjects(data.csv.camps);
   // load departments data
   features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
@@ -26,14 +22,14 @@ CampsMap.prototype.onEachDepartment = function(department, layer) {
     layer.bindTooltip("☘ " + departmentCamps["eedf"] + "  |  " + departmentCamps["total"], {
       permanent: true, 
       direction: "center",
-      className: "total-label"
-    });
-    // add listeners on layer
-    layer.on({
-      mouseover: CampsMap.prototype.highlightFeature,
-      mouseout: CampsMap.prototype.resetFeature
+      className: "totals-tooltip"
     });
   }
+  // add listeners on layer
+  layer.on({
+    mouseover: CampsMap.prototype.highlightFeature,
+    mouseout: CampsMap.prototype.resetFeature
+  });
 }
 
 CampsMap.prototype.styleDepartment = function(department) {
@@ -69,7 +65,7 @@ CampsMap.prototype.styleDepartment = function(department) {
   };
 }
 
-CampsMap.prototype.highlightFeature = function (e) {
+CampsMap.prototype.highlightFeature = function(e) {
   var layer = e.target;
   // increase opacity to max
   layer.setStyle({
@@ -81,5 +77,5 @@ CampsMap.prototype.highlightFeature = function (e) {
 CampsMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsMap"] + "</h4>"
-    + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total");
+    + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total");
 }

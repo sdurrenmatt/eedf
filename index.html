@@ -34,12 +34,13 @@
     <script src="js/maps/eedf.js"></script>
     <script src="js/maps/centres.js"></script>
     <script src="js/maps/camps.js"></script>
+    <script src="js/maps/bafa.js"></script>
     <script type="text/javascript">
       var tileLayer,
         map,
         features = {},
         infos = {},
-        viewId = "CampsMap";
+        viewId = "CentresMap";
 
       function initTileLayer() {
         // Mapbox custom tile layer
@@ -71,10 +72,14 @@
         L.easyButton("fa-home", function() {
           selectMap("CentresMap");
         }, titles["CentresMap"]).addTo(map);
-        // Nombre de camps par département
+        // Camps par département
         L.easyButton("fa-campground", function() {       
           selectMap("CampsMap");
         }, titles["CampsMap"]).addTo(map);
+        // Stages par centre
+        L.easyButton("<strong>B</strong>", function() {
+          selectMap("BafaMap");
+        }, titles["BafaMap"]).addTo(map);
       }
 
       function removeLayers() {

@@ -15,7 +15,6 @@ EEDFMap.prototype.loadFeatures = function() {}
 
 EEDFMap.prototype.deactivateLoader = function() {
   features[viewId].on("data:loaded", function() {
-    features[viewId].addTo(map);
     map.spin(false);
   });
 }

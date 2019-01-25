@@ -30,6 +30,7 @@ const spinConfig = {
 
 // Map titles
 const titles = {
-  "CentresMap": "Centres bénévoles et CPN",
-  "CampsMap": "Nombre de camps par département"
+  "CentresMap": "Centres",
+  "CampsMap": "Camps par département",
+  "BafaMap": "Stages par centre"
 };
