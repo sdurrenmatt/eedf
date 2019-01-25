@@ -1,6 +1,6 @@
 // Mapbox
 const mapboxConfig = {
-  urlTemplate: "https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles",
+  urlTemplate: "https://api.mapbox.com/styles/v1/sdurrenmath/cjrc0nwvw1h4u2so25viiy282/tiles",
   accessToken: "pk.eyJ1Ijoic2R1cnJlbm1hdGgiLCJhIjoiY2pxeTdpMjk2MDBqcDRhbXk0bzYzYXVhNyJ9.IFLnN_RQmycBsiu6SAK3eA"
 };
 

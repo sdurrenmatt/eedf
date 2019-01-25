@@ -65,8 +65,8 @@ CampsTrainingsHolidaysMap.prototype.styleTown = function(town) {
 CampsTrainingsHolidaysMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsTrainingsHolidaysMap"] + "</h4>"
-  + "<i class='fa fa-campground'></i> Camps  |  "
-  + "<span class='bafa'>BAFA</span>  |  "
-  + "<span class='bafd'>BAFD</span>  |  "
-  + "<i class='fa fa-sun'></i> Séjours";
+    + "<i class='fa fa-campground'></i> Camps  |  "
+    + "<span class='bafa'>BAFA</span>  |  "
+    + "<span class='bafd'>BAFD</span>  |  "
+    + "<i class='fa fa-sun'></i> Séjours";
 }

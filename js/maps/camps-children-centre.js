@@ -48,5 +48,5 @@ CampsChildrenCentreMap.prototype.styleTown = function(town) {
 CampsChildrenCentreMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsChildrenCentreMap"] + "</h4>"
-  + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants");
+    + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants");
 }

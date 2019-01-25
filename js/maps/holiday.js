@@ -118,7 +118,7 @@ HolidayMap.prototype.resetFeature = function(e) {
 HolidayMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["HolidayMap"] + "</h4>"
-  + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-sun'></i> Séjours    <i class='fas fa-male'></i> Vacanciers")
-  + "<br/><br/>"
-  + "Vacanciers par département <span class='legend'></span>";
+    + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-sun'></i> Séjours    <i class='fas fa-male'></i> Vacanciers")
+    + "<br/><br/>"
+    + "Vacanciers par département <span class='legend'></span>";
 }
