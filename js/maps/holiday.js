@@ -83,10 +83,13 @@ HolidayMap.prototype.onEachTown = function(town, layer) {
   // find number of holidays in town
   var townHolidays = holidays.find(function(holiday) { return holiday["code_insee"] === town.properties["insee"]; });
   if (townHolidays && townHolidays["sejours"] !== "0") {
+    // custom direction
+    var direction = "right";
+    if (town.properties["insee"] === "05079") direction = "left";
     // display stays and vacationers in a tooltip
     layer.bindTooltip("<div class='stays-tooltip'><i class='fas fa-sun'></i> " + townHolidays["sejours"] + "</div><div class='vacationers-tooltip'><i class='fas fa-male'></i> " + townHolidays["vacanciers"] + "</div>", {
       permanent: true,
-      direction: "right",
+      direction: direction,
       className: "holidays-tooltip"
     });
   }
@@ -118,5 +121,5 @@ HolidayMap.prototype.infoUpdate = function(properties) {
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["HolidayMap"] + "</h4>"
   + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-sun'></i> Séjours    <i class='fas fa-male'></i> Vacanciers")
   + "<br/><br/>"
-  + "Vacanciers par département <span class='vacationers-legend'></span>";
+  + "Vacanciers par département <span class='legend'></span>";
 }

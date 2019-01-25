@@ -34,5 +34,6 @@ const titles = {
   "CampsMap": "Camps par département",
   "BafaMap": "Stages par centre",
   "HolidayMap": "Séjours par centre",
-  "CampsAndChildrenMap": "Camps et enfants par centre"
+  "CampsAndChildrenMap": "Camps et enfants par centre",
+  "CampsAndChildren2Map": "Camps et enfants par départment"
 };

@@ -177,8 +177,7 @@ p.town {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.trainees-legend,
-.vacationers-legend {
+.legend {
   line-height: 18px;
   background-image: linear-gradient(to right, #FFF0BC, #C72C48);
   width: 50px;

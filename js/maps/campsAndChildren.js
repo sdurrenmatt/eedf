@@ -26,10 +26,14 @@ CampsAndChildrenMap.prototype.onEachTown = function(town, layer) {
   // find number of camps and children in town
   var townCampsAndChildren = campsAndChildren.find(function(element) { return element["code_insee"] === town.properties["insee"]; });
   if (townCampsAndChildren && townCampsAndChildren["camps"] !== "0") {
+    // custom direction
+    var direction = "right";
+    if      (town.properties["insee"] === "65017") direction = "left";
+    else if (town.properties["insee"] === "81201") direction = "left";
     // display camps and children in a tooltip
     layer.bindTooltip("<div class='camps-tooltip'><i class='fas fa-campground'></i> " + townCampsAndChildren["camps"] + "</div><div class='children-tooltip'><i class='fas fa-child'></i> " + townCampsAndChildren["enfants"] + "</div>", {
       permanent: true,
-      direction: "right",
+      direction: direction,
       className: "campsAndChildren-tooltip"
     });
   }

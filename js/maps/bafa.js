@@ -118,5 +118,5 @@ BafaMap.prototype.infoUpdate = function(properties) {
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["BafaMap"] + "</h4>"
   + (properties ? properties["code_insee"] + " " + properties["nom"] : "<span class='bafa'>BAFA</span>  |  <span class='bafd'>BAFD</span>")
   + "<br/><br/>"
-  + "Stagiaires par département <span class='trainees-legend'></span>";
+  + "Stagiaires par département <span class='legend'></span>";
 }

@@ -77,5 +77,7 @@ CampsMap.prototype.highlightFeature = function(e) {
 CampsMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsMap"] + "</h4>"
-    + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total");
+    + (properties ? properties["code_insee"] + " " + properties["nom"] : "☘ EEDF  |  Total")
+    + "<br/><br/>"
+    + "Total <span class='legend'></span>";
 }
