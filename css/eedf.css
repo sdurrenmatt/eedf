@@ -70,7 +70,8 @@ p.town {
   text-transform: uppercase;
 }
 
-.centre-tooltip-CENTRE, .centre-tooltip-CPN {
+.centre-tooltip-CENTRE,
+.centre-tooltip-CPN {
   border: transparent;
   box-shadow: none;
   border-radius: 0;
@@ -108,7 +109,9 @@ p.town {
   color: rgba(0, 0, 0, 0.75);
 }
 
-.trainings-tooltip, .holidays-tooltip {
+.trainings-tooltip,
+.holidays-tooltip,
+.campsAndChildren-tooltip {
   background-color: transparent;
   border: transparent;
   box-shadow: none;
@@ -123,7 +126,9 @@ p.town {
   color: rgb(130, 26, 129);
 }
 
-.bafa-tooltip, .stays-tooltip {
+.bafa-tooltip,
+.stays-tooltip,
+.camps-tooltip {
   padding: 5px;
   border: 2px solid black;
   border-radius: 5px 5px 0 0;
@@ -133,7 +138,9 @@ p.town {
   color: white;
 }
 
-.bafd-tooltip, .vacationers-tooltip {
+.bafd-tooltip,
+.vacationers-tooltip,
+.children-tooltip {
   padding: 5px;
   border-bottom: 2px solid black;
   border-left: 2px solid black;
@@ -162,7 +169,16 @@ p.town {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.trainees-legend, .vacationers-legend {
+.camps-tooltip {
+  background-color: rgba(254, 27, 0, 0.75);
+}
+
+.children-tooltip {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.trainees-legend,
+.vacationers-legend {
   line-height: 18px;
   background-image: linear-gradient(to right, #FFF0BC, #C72C48);
   width: 50px;

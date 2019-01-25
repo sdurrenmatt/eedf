@@ -359,7 +359,7 @@ data.csv.vacationers = "code_insee,total\n"
   + "92,0\n"
   + "93,0\n"
   + "94,0\n"
-  + "95,0\n";
+  + "95,0";
 // Holidays
 data.csv.holidays = "code_insee,sejours,vacanciers\n"
   + "01104,0,0\n"
@@ -393,7 +393,36 @@ data.csv.holidays = "code_insee,sejours,vacanciers\n"
   + "73306,1,24\n"
   + "63463,2,64\n"
   + "88415,1,31\n"
-  + "90041,0,0\n";
+  + "90041,0,0";
+// Camps and children
+data.csv.campsAndChildren = "code_insee,camps,enfants\n"
+  + "01104,1,16\n"
+  + "03081,1,79\n"
+  + "05079,0,0\n"
+  + "06019,0,0\n"
+  + "06116,1,45\n"
+  + "10029,3,71\n"
+  + "12131,6,108\n"
+  + "13001,0,0\n"
+  + "17140,0,0\n"
+  + "21017,3,180\n"
+  + "24183,1,75\n"
+  + "29001,1,63\n"
+  + "35334,0,0\n"
+  + "37132,1,62\n"
+  + "42039,1,34\n"
+  + "42230,0,0\n"
+  + "48132,1,17\n"
+  + "56162,1,49\n"
+  + "65017,1,58\n"
+  + "65078,1,53\n"
+  + "67191,0,0\n"
+  + "69164,2,68\n"
+  + "81201,10,179\n"
+  + "84110,1,68\n"
+  + "85166,0,0\n"
+  + "86024,0,0\n"
+  + "86203,2,87";
 // load data
 var centres = $.csv.toObjects(data.csv.centres);
 var camps = $.csv.toObjects(data.csv.camps);
@@ -401,3 +430,4 @@ var trainees = $.csv.toObjects(data.csv.trainees);
 var trainings = $.csv.toObjects(data.csv.trainings);
 var vacationers = $.csv.toObjects(data.csv.vacationers);
 var holidays = $.csv.toObjects(data.csv.holidays);
+var campsAndChildren = $.csv.toObjects(data.csv.campsAndChildren);
