@@ -1,6 +1,6 @@
-// Mapbox
+﻿// Mapbox
 const mapboxConfig = {
-  urlTemplate: "https://api.mapbox.com/styles/v1/sdurrenmath/cjrc0nwvw1h4u2so25viiy282/tiles",
+  urlTemplate: "https://api.mapbox.com/styles/v1/sdurrenmath/cjre243n12cks2snutx4vwey2/tiles",
   accessToken: "pk.eyJ1Ijoic2R1cnJlbm1hdGgiLCJhIjoiY2pxeTdpMjk2MDBqcDRhbXk0bzYzYXVhNyJ9.IFLnN_RQmycBsiu6SAK3eA"
 };
 
@@ -31,10 +31,10 @@ const spinConfig = {
 // Map titles
 const titles = {
   "CentresMap": "Centres",
-  "CampsMap": "Camps par département",
-  "BafaMap": "Stages par centre",
-  "HolidayMap": "Séjours par centre",
-  "CampsChildrenCentreMap": "Camps et enfants par centre",
-  "CampsChildrenDepartmentMap": "Camps et enfants par départment",
-  "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre"
+  "CampsMap": "Camps par département en 2018",
+  "BafaMap": "Stages par centre en 2018",
+  "HolidayMap": "Séjours SV en 2018",
+  "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
+  "CampsChildrenDepartmentMap": "Camps et enfants par départment en 2018",
+  "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018"
 };

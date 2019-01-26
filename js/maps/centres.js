@@ -1,4 +1,4 @@
-function CentresMap() { 
+﻿function CentresMap() {
   EEDFMap.call(this);
 }
 
@@ -10,8 +10,8 @@ function displayCentre(town, layer) {
     className: "centre-popup"
   }).setLatLng(layer.getBounds().getCenter())
     .setContent("<h4>" + centre["nom"] + "</h4>" 
-    + "<p class='centre-" + centre["type"] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
-    + "<p class='town'>" + centre["code_insee"] + " " + town.properties["nom"] + "</p>");
+      + "<p class='centre-" + centre["type"] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
+      + "<p class='town'>" + centre["code_insee"] + " " + town.properties["nom"] + "</p>");
   // create awesome marker
   var awesomeMarker = L.AwesomeMarkers.icon({
     icon: "home",
@@ -30,12 +30,17 @@ CentresMap.prototype = Object.create(EEDFMap.prototype, {
 });
 
 CentresMap.prototype.loadFeatures = function() {
+  // load departments data
+  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+    style: this.styleDepartment
+  });
   // load towns data
-  features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
+  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
   });
+  features[viewId] = L.featureGroup([departments, towns]);
 }
 
 CentresMap.prototype.filterTowns = function(town) {
@@ -63,7 +68,7 @@ CentresMap.prototype.onEachTown = function(town, layer) {
   // custom direction
   var direction = "top";
   if      (centre["nom"] === "Blausasc")    direction = "right";
-  else if (centre["nom"] === "Chalmazel")   direction = "bottom";
+  else if (centre["nom"] === "Chalmazel")   direction = "right";
   else if (centre["nom"] === "Etueffont")   direction = "left";
   else if (centre["nom"] === "Foucheval")   direction = "left";
   else if (centre["nom"] === "Fabian")      direction = "right";

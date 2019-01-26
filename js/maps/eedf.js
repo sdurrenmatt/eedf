@@ -14,15 +14,15 @@ EEDFMap.prototype.createLoader = function() {
 EEDFMap.prototype.loadFeatures = function() {}
 
 EEDFMap.prototype.deactivateLoader = function() {
-  features[viewId].on("data:loaded", function() {
+  departments.on("dataLoadComplete", function() {
     map.spin(false);
   });
 }
 
 EEDFMap.prototype.loadInfo = function() {
-    infos[viewId] = L.control();
-    infos[viewId].onAdd = this.infoOnAdd;
-    infos[viewId].update = this.infoUpdate;
+  infos[viewId] = L.control();
+  infos[viewId].onAdd = this.infoOnAdd;
+  infos[viewId].update = this.infoUpdate;
 }
 
 EEDFMap.prototype.infoOnAdd = function(map) {
@@ -35,12 +35,15 @@ EEDFMap.prototype.infoUpdate = function(properties) {
   this._div.innerHTML = "";
 }
 
-EEDFMap.prototype.highlightFeature = function(e) {
-  var layer = e.target;
-  infos[viewId].update(layer.feature.properties);
-}
-
 EEDFMap.prototype.resetFeature = function(e) {
   features[viewId].resetStyle(e.target);
   infos[viewId].update();
+}
+
+EEDFMap.prototype.styleDepartment = function() {
+  return {
+    color: "#AFAFAF",
+    weight: 1,
+    fillOpacity: 0.25
+  };
 }

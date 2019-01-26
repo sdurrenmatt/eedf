@@ -54,7 +54,7 @@ CampsChildrenDepartmentMap.prototype.styleDepartment = function(department) {
     return {
       color: "#AFAFAF", 
       weight: 2, 
-      fillOpacity: 0.5
+      fillOpacity: 0.25
     }; 
   }
   // at least one camp

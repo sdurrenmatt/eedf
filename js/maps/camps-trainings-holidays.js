@@ -6,15 +6,18 @@ CampsTrainingsHolidaysMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: CampsTrainingsHolidaysMap }
 });
 
-var departments;
-
 CampsTrainingsHolidaysMap.prototype.loadFeatures = function() {
+  // load departments data
+  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+    style: this.styleDepartment
+  });
   // load towns data
-  features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
+  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
   });
+  features[viewId] = L.featureGroup([departments, towns]);
 }
 
 CampsTrainingsHolidaysMap.prototype.filterTowns = function(town) {
@@ -43,6 +46,7 @@ CampsTrainingsHolidaysMap.prototype.onEachTown = function(town, layer) {
     if (town.properties["insee"] === "63463") direction = "left";
     else if (town.properties["insee"] === "65078") direction = "left";
     else if (town.properties["insee"] === "73306") direction = "left";
+    else if (town.properties["insee"] === "81201") direction = "left";
     else if (town.properties["insee"] === "86024") direction = "left";
     // display camps, trainings and holidays in a tooltip
     layer.bindTooltip("<div class='camps-trainings-holidays-tooltip-1'><i class='fa fa-campground'></i> " + townCampsTrainingsHolidays["camps"] + "</div>"

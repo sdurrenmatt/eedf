@@ -6,8 +6,6 @@ BafaMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: BafaMap }
 });
 
-var departments;
-
 BafaMap.prototype.loadFeatures = function() {
   // load departments data
   departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {

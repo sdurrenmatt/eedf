@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>EEDF</title>
@@ -40,8 +40,9 @@
     <script src="js/maps/camps-children-department.js"></script>
     <script src="js/maps/camps-trainings-holidays.js"></script>
     <script type="text/javascript">
-      var tileLayer,
-        map,
+      var map,
+        tileLayer,
+        departments,
         features = {},
         infos = {},
         viewId = "CentresMap";
@@ -105,7 +106,7 @@
       function removeLayers() {
         map.eachLayer(function(layer) {
           // do not remove tile layer
-          if (!(layer instanceof L.TileLayer)) {
+          if (layer !== tileLayer) {
             map.removeLayer(layer);
           }
         });

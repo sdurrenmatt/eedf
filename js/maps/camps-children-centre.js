@@ -7,12 +7,17 @@ CampsChildrenCentreMap.prototype = Object.create(EEDFMap.prototype, {
 });
 
 CampsChildrenCentreMap.prototype.loadFeatures = function() {
+  // load departments data
+  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+    style: this.styleDepartment
+  });
   // load towns data
-  features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
+  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
   });
+  features[viewId] = L.featureGroup([departments, towns]);
 }
 
 CampsChildrenCentreMap.prototype.filterTowns = function(town) {
