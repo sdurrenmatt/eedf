@@ -6,19 +6,11 @@ BafaMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: BafaMap }
 });
 
-BafaMap.prototype.loadFeatures = function() {
-  // load departments data
+BafaMap.prototype.loadDepartments = function() {
   departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
     style: this.styleDepartment
   });
-  // load towns data
-  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
-    filter: this.filterTowns,
-    onEachFeature: this.onEachTown,
-    style: this.styleTown
-  });
-  features[viewId] = L.featureGroup([departments, towns]);
 }
 
 BafaMap.prototype.onEachDepartment = function(department, layer) {
@@ -77,7 +69,7 @@ BafaMap.prototype.filterTowns = function(town) {
 
 BafaMap.prototype.onEachTown = function(town, layer) {
   // display centre
-  displayCentre(town, layer);
+  BafaMap.prototype.displayCentre(town, layer);
   // find number of trainings in town
   var townTrainings = trainings.find(function(training) { return training["code_insee"] === town.properties["insee"]; });
   if (townTrainings && (townTrainings["bafa"] !== "0" || townTrainings["bafd"] !== "0")) {

@@ -2,69 +2,25 @@
   EEDFMap.call(this);
 }
 
-function displayCentre(town, layer) {
-  // find centre in town
-  var centre = centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
-  // create popup
-  var popup = L.popup({
-    className: "centre-popup"
-  }).setLatLng(layer.getBounds().getCenter())
-    .setContent("<h4>" + centre["nom"] + "</h4>" 
-      + "<p class='centre-" + centre["type"] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
-      + "<p class='town'>" + centre["code_insee"] + " " + town.properties["nom"] + "</p>");
-  // create awesome marker
-  var awesomeMarker = L.AwesomeMarkers.icon({
-    icon: "home",
-    prefix: "fa",
-    markerColor: centre["type"] === "CENTRE" ? "green" : "black"
-  });
-  // add marker
-  L.marker(layer.getBounds().getCenter(), {
-    icon: awesomeMarker
-  }).bindPopup(popup)
-    .addTo(map);
-}
-
 CentresMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: CentresMap }
 });
-
-CentresMap.prototype.loadFeatures = function() {
-  // load departments data
-  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
-    style: this.styleDepartment
-  });
-  // load towns data
-  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
-    filter: this.filterTowns,
-    onEachFeature: this.onEachTown,
-    style: this.styleTown
-  });
-  features[viewId] = L.featureGroup([departments, towns]);
-}
 
 CentresMap.prototype.filterTowns = function(town) {
   // show town only if there is a centre
   return !!centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
 }
 
-CentresMap.prototype.onEachTown = function(town, layer) {
-  // find centre in town
-  var centre = centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
-  // create popup
-  var popup = L.popup({
-    className: "centre-popup"
-  }).setLatLng(layer.getBounds().getCenter())
-    .setContent("<h4>" + centre["nom"] + "</h4>" 
-    + "<p class='centre-" + centre["type"] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
-    + "<p class='town'>" + centre["code_insee"] + " " + town.properties["nom"] + "</p>");
-  // add circle marker
+CentresMap.prototype.addMarker = function(centre, layer, popup) {
   L.circleMarker(layer.getBounds().getCenter(), {
     color: centre["type"] === "CENTRE" ? "#72b026" : "#000",
     radius: 1,
     fillOpacity: 1
   }).bindPopup(popup)
     .addTo(map);
+}
+
+CentresMap.prototype.addTooltip = function(centre, layer) {
   // custom direction
   var direction = "top";
   if      (centre["nom"] === "Blausasc")    direction = "right";
@@ -77,17 +33,31 @@ CentresMap.prototype.onEachTown = function(town, layer) {
   else if (centre["nom"] === "Les Révotes") direction = "right";
   else if (centre["nom"] === "Lespone")     direction = "left";
   else if (centre["nom"] === "Queaux")      direction = "right";
-  // add tooltip
   layer.bindTooltip(centre["nom"], {
     permanent: true, 
     interactive: true,
     direction: direction,
     className: "centre-tooltip-" + centre["type"]
   }).addTo(map);
-  // add listener on layer
+}
+
+CentresMap.prototype.addListener = function(layer, popup) {
   layer.on("click", function(e) {
     map.openPopup(popup);
   });
+}
+
+CentresMap.prototype.onEachTown = function(town, layer) {
+  // find centre in town
+  var centre = centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
+  // create popup
+  var popup = CentresMap.prototype.popupCentre(centre, town, layer);
+  // add circle marker
+  CentresMap.prototype.addMarker(centre, layer, popup);
+  // add tooltip
+  CentresMap.prototype.addTooltip(centre, layer);
+  // add listener
+  CentresMap.prototype.addListener(layer, popup);
 }
 
 CentresMap.prototype.styleTown = function(town) {

@@ -8,7 +8,13 @@ CampsChildrenDepartmentMap.prototype = Object.create(EEDFMap.prototype, {
 
 CampsChildrenDepartmentMap.prototype.loadFeatures = function() {
   // load departments data
-  features[viewId] = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+  this.loadDepartments();
+  // add features
+  features[viewId] = departments;
+}
+
+CampsChildrenDepartmentMap.prototype.loadDepartments = function() {
+  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
     style: this.styleDepartment
   });

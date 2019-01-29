@@ -6,20 +6,6 @@ CampsChildrenCentreMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: CampsChildrenCentreMap }
 });
 
-CampsChildrenCentreMap.prototype.loadFeatures = function() {
-  // load departments data
-  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
-    style: this.styleDepartment
-  });
-  // load towns data
-  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
-    filter: this.filterTowns,
-    onEachFeature: this.onEachTown,
-    style: this.styleTown
-  });
-  features[viewId] = L.featureGroup([departments, towns]);
-}
-
 CampsChildrenCentreMap.prototype.filterTowns = function(town) {
   // show town only if there are camps
   return !!campsChildrenCentre.find(function(element) { return element["code_insee"] === town.properties["insee"] && element["camps"] !== "0";});
@@ -27,7 +13,7 @@ CampsChildrenCentreMap.prototype.filterTowns = function(town) {
 
 CampsChildrenCentreMap.prototype.onEachTown = function(town, layer) {
   // display centre
-  displayCentre(town, layer);
+  CampsChildrenCentreMap.prototype.displayCentre(town, layer);
   // find number of camps and children in town
   var townCampsAndChildren = campsChildrenCentre.find(function(element) { return element["code_insee"] === town.properties["insee"]; });
   if (townCampsAndChildren && townCampsAndChildren["camps"] !== "0") {

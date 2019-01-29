@@ -181,53 +181,41 @@ p.town {
   opacity: 0.9;
 }
 
-.camps-trainings-holidays-tooltip-1 {
-  display: inline-block;
-  padding: 3px;
-  border: 1px solid black;
-  border-radius: 3px 0 0 3px;
-  font-family: "Varela Round", sans-serif;
-  font-size: xx-small;
-  font-size: bolder;
-  background-color: rgba(254, 27, 0, 0.75);
-  color: white;
-}
-
-.camps-trainings-holidays-tooltip-2 {
-  display: inline-block;
-  padding: 3px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  font-family: "Varela Round", sans-serif;
-  font-size: xx-small;
-  font-size: bolder;
-  background-color: rgba(232, 75, 4, 0.75);
-  color: white;
-}
-.camps-trainings-holidays-tooltip-3 {
-  display: inline-block;
-  padding: 3px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  font-family: "Varela Round", sans-serif;
-  font-size: xx-small;
-  font-size: bolder;
-  background-color: rgba(130, 26, 129, 0.75);
-  color: white;
-}
-
+.camps-trainings-holidays-tooltip-1,
+.camps-trainings-holidays-tooltip-2,
+.camps-trainings-holidays-tooltip-3,
 .camps-trainings-holidays-tooltip-4 {
   display: inline-block;
   padding: 3px;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-small;
+  color: white;
+}
+
+.camps-trainings-holidays-tooltip-1 {
+  border: 1px solid black;
+  border-radius: 3px 0 0 3px;
+  background-color: rgba(254, 27, 0, 0.75);
+}
+
+.camps-trainings-holidays-tooltip-2 {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: rgba(232, 75, 4, 0.75);
+}
+
+.camps-trainings-holidays-tooltip-3 {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: rgba(130, 26, 129, 0.75);
+}
+
+.camps-trainings-holidays-tooltip-4 {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   border-radius: 0 3px 3px 0;
-  font-family: "Varela Round", sans-serif;
-  font-size: xx-small;
-  font-size: bolder;
   background-color: rgba(0, 51, 102, 0.75);
-  color: white;
 }

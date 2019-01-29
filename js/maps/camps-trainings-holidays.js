@@ -6,20 +6,6 @@ CampsTrainingsHolidaysMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: CampsTrainingsHolidaysMap }
 });
 
-CampsTrainingsHolidaysMap.prototype.loadFeatures = function() {
-  // load departments data
-  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
-    style: this.styleDepartment
-  });
-  // load towns data
-  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
-    filter: this.filterTowns,
-    onEachFeature: this.onEachTown,
-    style: this.styleTown
-  });
-  features[viewId] = L.featureGroup([departments, towns]);
-}
-
 CampsTrainingsHolidaysMap.prototype.filterTowns = function(town) {
   // show town only if there is some data
   return !!campsTrainingsHolidays.find(function(element) { 
@@ -33,7 +19,7 @@ CampsTrainingsHolidaysMap.prototype.filterTowns = function(town) {
 
 CampsTrainingsHolidaysMap.prototype.onEachTown = function(town, layer) {
   // display centre
-  displayCentre(town, layer);
+  CampsTrainingsHolidaysMap.prototype.displayCentre(town, layer);
   // find camps, trainings and holidays in town
   var townCampsTrainingsHolidays = campsTrainingsHolidays.find(function(element) { return element["code_insee"] === town.properties["insee"]; });
   if (townCampsTrainingsHolidays 

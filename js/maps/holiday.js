@@ -6,19 +6,11 @@ HolidayMap.prototype = Object.create(EEDFMap.prototype, {
   constructor: { value: HolidayMap }
 });
 
-HolidayMap.prototype.loadFeatures = function() {
-  // load departments data
+HolidayMap.prototype.loadDepartments = function() {
   departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
     style: this.styleDepartment
   });
-  // load towns data
-  var towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
-    filter: this.filterTowns,
-    onEachFeature: this.onEachTown,
-    style: this.styleTown
-  });
-  features[viewId] = L.featureGroup([departments, towns]);
 }
 
 HolidayMap.prototype.onEachDepartment = function(department, layer) {
@@ -79,13 +71,13 @@ HolidayMap.prototype.filterTowns = function(town) {
 
 HolidayMap.prototype.onEachTown = function(town, layer) {
   // display centre
-  displayCentre(town, layer);
+  HolidayMap.prototype.displayCentre(town, layer);
   // find number of holidays in town
   var townHolidays = holidays.find(function(holiday) { return holiday["code_insee"] === town.properties["insee"]; });
   if (townHolidays && townHolidays["sejours"] !== "0") {
     // custom direction
     var direction = "right";
-    if (town.properties["insee"] === "05079") direction = "left";
+    if (town.properties["insee"] === "73306") direction = "left";
     // display stays and vacationers in a tooltip
     layer.bindTooltip("<div class='stays-tooltip'><i class='fas fa-sun'></i> " + townHolidays["sejours"] + "</div><div class='vacationers-tooltip'><i class='fas fa-male'></i> " + townHolidays["vacanciers"] + "</div>", {
       permanent: true,

@@ -29,6 +29,7 @@
   </head>
   <body>
     <div id="map"></div>
+    <script src="js/communes.js"></script>
     <script src="js/config.js"></script>
     <script src="js/data.js"></script>
     <script src="js/maps/eedf.js"></script>
@@ -43,6 +44,7 @@
       var map,
         tileLayer,
         departments,
+        towns,
         features = {},
         infos = {},
         viewId = "CentresMap";
@@ -66,9 +68,7 @@
           zoomDelta: 0.2,
           zoomSnap: 0
         });
-
         setDefaultView();
-
         map.addLayer(tileLayer);
       }
 
@@ -121,17 +121,14 @@
       function resetMap() {
         // remove layers
         removeLayers();
-
         // remove info control
         removeInfoControl(infos[viewId]);
-
         // reset view
         setDefaultView();
       }
 
       function loadView(viewId) {
         this.viewId = viewId;
-
         new window[viewId]().load();
       }
 
@@ -142,22 +139,17 @@
 
       function selectMap(viewId) {
         resetMap(viewId);
-
         loadView(viewId);
-
         updateMap();
       }
 
       $(function() {
         // init tile layer
         initTileLayer();
-
         // create map
         createMap();
-
         // add icons to choose the view
         addIcons();
-
         // default selection
         selectMap("CentresMap");
       });
