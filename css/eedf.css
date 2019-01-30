@@ -45,15 +45,35 @@ body {
   margin: 0 0 5px;
 }
 
-.centre-benevole {
-  color: #72b026;
+.bail-emphyteotique {
+  color: #791CF8;
 }
 
-.cpn {
-  color: #000;
+.bureau {
+  color: #003366;
 }
 
-p[class^="centre-"] {
+.centre {
+  color: #72B026;
+}
+
+.centre-national {
+  color: #000000;
+}
+
+.groupe {
+  color: #ED7F10;
+}
+
+.terrain {
+  color: #095228;
+}
+
+.en-vente {
+  color: #960018;
+}
+
+p[class^="property-"] {
   padding: 5px;
   font: 12px "Open Sans", sans-serif;
   color: #fff;
@@ -61,49 +81,93 @@ p[class^="centre-"] {
   text-align: center;
 }
 
-p.centre-CENTRE {
+p.property-bail-emphyteotique {
+  width: 160px;
+  background-color: #791CF8;
+}
+
+p.property-bureau {
+  width: 60px;
+  background-color: #003366;
+}
+
+p.property-centre {
   width: 120px;
   background-color: #72b026;
 }
 
-p.centre-CPN {
-  width: 30px;
-  background-color: #000;
+p.property-centre-national {
+  width: 120px;
+  background-color: #000000;
+}
+
+p.property-groupe {
+  width: 60px;
+  background-color: #ED7F10;
+}
+
+p.property-terrain {
+  width: 60px;
+  background-color: #095228;
+}
+
+p.property-en-vente {
+  width: 60px;
+  background-color: #960018;
 }
 
 p.town {
   font: 12px "Open Sans", sans-serif;
-  color: #777;
+  color: #777777;
   text-transform: uppercase;
 }
 
-.centre-tooltip-CENTRE,
-.centre-tooltip-CPN {
+[class*="property-tooltip-"] {
   border: transparent;
   box-shadow: none;
   border-radius: 0;
   font-family: "Open Sans", sans-serif;
-  font-size: smaller;
+  font-size: xx-small;
   font-weight: bolder;
   color: white;
 }
 
-.centre-tooltip-CENTRE {
-  background-color: rgba(114, 176, 38, 1);
+.property-tooltip-bail-emphyteotique {
+  background-color: #791CF8;
 }
 
-.centre-tooltip-CPN {
-  background-color: rgba(0, 0, 0, 1);
+.property-tooltip-bureau {
+  background-color: #003366;
 }
 
-.centre-popup > .leaflet-popup-content-wrapper {
+.property-tooltip-centre {
+  background-color: rgb(114, 176, 38);
+}
+
+.property-tooltip-centre-national {
+  background-color: rgb(0, 0, 0);
+}
+
+.property-tooltip-groupe {
+  background-color: #ED7F10;
+}
+
+.property-tooltip-terrain {
+  background-color: #095228;
+}
+
+.property-tooltip-en-vente {
+  background-color: #960018;
+}
+
+.property-popup > .leaflet-popup-content-wrapper {
   border-radius: 0;
 }
 
 .leaflet-popup-content > h4 {
   font: 14px "Varela Round", sans-serif;
   font-weight: bold;
-  color: #777;
+  color: #777777;
 }
 
 .totals-tooltip {

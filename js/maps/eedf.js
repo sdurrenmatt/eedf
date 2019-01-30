@@ -1,5 +1,29 @@
 function EEDFMap() {}
 
+const classNames = {
+  "Bail Emphytéotique": "bail-emphyteotique",
+  "Bureau": "bureau",
+  "Centre": "centre",
+  "CENTRE": "centre",
+  "Centre National": "centre-national",
+  "CPN": "centre-national",
+  "Groupe": "groupe",
+  "En vente": "en-vente",
+  "Terrain": "terrain"
+}
+
+const colors = {
+  "Bail Emphytéotique": "#791CF8",
+  "Bureau": "#003366",
+  "Centre": "#72B026",
+  "CENTRE": "#72B026",
+  "Centre National": "#000000",
+  "CPN": "#000000",
+  "Groupe": "#ED7F10",
+  "En vente": "#960018",
+  "Terrain": "#095228"
+};
+
 EEDFMap.prototype.load = function() {
   this.createLoader();
   this.loadFeatures();
@@ -27,7 +51,7 @@ EEDFMap.prototype.loadDepartments = function() {
 }
 
 EEDFMap.prototype.loadTowns = function() {
-  towns = new L.geoJSON(communes, {
+  towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
@@ -71,10 +95,10 @@ EEDFMap.prototype.styleDepartment = function() {
 
 EEDFMap.prototype.popupCentre = function(centre, town, layer) {
   return L.popup({
-    className: "centre-popup"
+    className: "property-popup"
   }).setLatLng(layer.getBounds().getCenter())
     .setContent("<h4>" + centre["nom"] + "</h4>" 
-      + "<p class='centre-" + centre["type"] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
+      + "<p class='property-" + classNames[centre["type"]] + "'>" + (centre["type"] === "CENTRE" ? "Centre bénévole" : "CPN") + "</p>"
       + "<p class='town'>" + centre["code_insee"] + " " + town.properties["nom"] + "</p>");
 }
 

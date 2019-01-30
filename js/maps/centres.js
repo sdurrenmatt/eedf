@@ -13,7 +13,7 @@ CentresMap.prototype.filterTowns = function(town) {
 
 CentresMap.prototype.addMarker = function(centre, layer, popup) {
   L.circleMarker(layer.getBounds().getCenter(), {
-    color: centre["type"] === "CENTRE" ? "#72b026" : "#000",
+    color: colors[centre["type"]],
     radius: 1,
     fillOpacity: 1
   }).bindPopup(popup)
@@ -37,7 +37,7 @@ CentresMap.prototype.addTooltip = function(centre, layer) {
     permanent: true, 
     interactive: true,
     direction: direction,
-    className: "centre-tooltip-" + centre["type"]
+    className: "property-tooltip-" + classNames[centre["type"]]
   }).addTo(map);
 }
 
@@ -70,5 +70,5 @@ CentresMap.prototype.styleTown = function(town) {
 CentresMap.prototype.infoUpdate = function(properties) {
   // set title
   infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CentresMap"] + "</h4>"
-    + "<span class='centre-benevole'>• Centre bénévole</span>    <span class='cpn'>• CPN</span>";
+    + "<span class='centre'>• Centre bénévole</span>    <span class='centre-national'>• CPN</span>";
 }

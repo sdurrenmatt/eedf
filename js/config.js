@@ -30,6 +30,7 @@ const spinConfig = {
 
 // Map titles
 const titles = {
+  "PropertiesMap": "Biens immobiliers",
   "CentresMap": "Centres",
   "CampsMap": "Camps par département en 2018",
   "BafaMap": "Stages par centre en 2018",

@@ -29,10 +29,10 @@
   </head>
   <body>
     <div id="map"></div>
-    <script src="js/communes.js"></script>
     <script src="js/config.js"></script>
     <script src="js/data.js"></script>
     <script src="js/maps/eedf.js"></script>
+    <script src="js/maps/properties.js"></script>
     <script src="js/maps/centres.js"></script>
     <script src="js/maps/camps.js"></script>
     <script src="js/maps/bafa.js"></script>
@@ -73,6 +73,10 @@
       }
 
       function addIcons() {
+        // Bien immobiliers
+        L.easyButton("fa-building", function() {
+          selectMap("PropertiesMap");
+        }, titles["PropertiesMap"]).addTo(map);
         // Centres bénévoles et CPN
         L.easyButton("fa-home", function() {
           selectMap("CentresMap");
@@ -151,7 +155,7 @@
         // add icons to choose the view
         addIcons();
         // default selection
-        selectMap("CentresMap");
+        selectMap("PropertiesMap");
       });
     </script>
   </body>
