@@ -160,7 +160,18 @@ p.town {
   background-color: #960018;
 }
 
-.property-popup > .leaflet-popup-content-wrapper {
+.sale-tooltip {
+  border: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: xx-small;
+  font-weight: bolder;
+  color: white;
+  background-color: rgb(169, 58, 62);
+}
+
+.leaflet-popup-content-wrapper {
   border-radius: 0;
 }
 

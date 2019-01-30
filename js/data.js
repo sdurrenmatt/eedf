@@ -72,7 +72,27 @@ data.csv.properties = "code_insee,nom,type\n"
   + "93051,Noisy Le Grand,En vente\n"
   + "59043,Bailleul,Bail Emphytéotique\n"
   + "29019,Brest,Bail Emphytéotique";
-
+// Sales
+data.csv.sales = "code_insee,nom\n"
+  + "85166,Olonne sur Mer\n"
+  + "58231,Saint Aubin des Forges\n"
+  + "10303,Précy Notre Dame\n"
+  + "35107,Ercé Près Liffré\n"
+  + "39059,Bois d'Amont\n"
+  + "19237,Moulin de Roland\n"
+  + "59350,Lille\n"
+  + "71078,Chamilly\n"
+  + "89235,Méluzien Magny\n"
+  + "71110,Chardonnay\n"
+  + "63113,Clermont Ferrand\n"
+  + "63430,Thiers\n"
+  + "05026,Grange de Ceillac\n"
+  + "33063,Bordeaux Matteotti\n"
+  + "02680,Saint Gobain\n"
+  + "83141,Trans en Provence\n"
+  + "75119,Paris Manin\n"
+  + "13055,Marseille\n"
+  + "06088,Nice";
 // Centres
 data.csv.centres = "code_insee,nom,type\n"
   + "01104,Le Planet,CENTRE\n"
@@ -333,7 +353,14 @@ data.csv.trainings = "code_insee,bafa,bafd\n"
   + "84110,0,0\n"
   + "85166,0,0\n"
   + "86024,1,0\n"
-  + "86203,0,0";
+  + "86203,0,0\n"
+  + "59416,11,2\n"
+  + "63463,3,0\n"
+  + "73306,0,0\n"
+  + "88415,2,0\n"
+  + "90041,0,0\n"
+  + "93051,0,0";
+
 // Vacationers
 data.csv.vacationers = "code_insee,total\n"
   + "01,36\n"
@@ -631,6 +658,7 @@ data.csv.campsTrainingsHolidays = "code_insee,camps,bafa,bafd,sejours\n"
 + "90041,1,0,0,0";
 // load data
 var properties = $.csv.toObjects(data.csv.properties);
+var sales = $.csv.toObjects(data.csv.sales);
 var centres = $.csv.toObjects(data.csv.centres);
 var camps = $.csv.toObjects(data.csv.camps);
 var trainees = $.csv.toObjects(data.csv.trainees);
