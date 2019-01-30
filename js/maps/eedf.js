@@ -41,7 +41,7 @@ EEDFMap.prototype.loadFeatures = function() {
   // load towns data
   this.loadTowns();
   // add features
-  features[viewId] = L.featureGroup([departments, towns]);
+  features = L.featureGroup([departments, towns]);
 }
 
 EEDFMap.prototype.loadDepartments = function() {
@@ -51,7 +51,7 @@ EEDFMap.prototype.loadDepartments = function() {
 }
 
 EEDFMap.prototype.loadTowns = function() {
-  towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20150101-100m-shp.zip", {
+  towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20140629-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
@@ -65,9 +65,9 @@ EEDFMap.prototype.deactivateLoader = function() {
 }
 
 EEDFMap.prototype.loadInfo = function() {
-  infos[viewId] = L.control();
-  infos[viewId].onAdd = this.infoOnAdd;
-  infos[viewId].update = this.infoUpdate;
+  info = L.control();
+  info.onAdd = this.infoOnAdd;
+  info.update = this.infoUpdate;
 }
 
 EEDFMap.prototype.infoOnAdd = function(map) {
@@ -81,8 +81,8 @@ EEDFMap.prototype.infoUpdate = function(properties) {
 }
 
 EEDFMap.prototype.resetFeature = function(e) {
-  features[viewId].resetStyle(e.target);
-  infos[viewId].update();
+  features.resetStyle(e.target);
+  info.update();
 }
 
 EEDFMap.prototype.styleDepartment = function() {

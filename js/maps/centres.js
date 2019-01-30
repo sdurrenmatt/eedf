@@ -69,6 +69,6 @@ CentresMap.prototype.styleTown = function(town) {
 
 CentresMap.prototype.infoUpdate = function(properties) {
   // set title
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CentresMap"] + "</h4>"
+  info._div.innerHTML = "<h4 class='title'>" + titles["CentresMap"] + "</h4>"
     + "<span class='centre'>• Centre bénévole</span>    <span class='centre-national'>• CPN</span>";
 }

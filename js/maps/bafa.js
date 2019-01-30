@@ -72,7 +72,7 @@ BafaMap.prototype.onEachTown = function(town, layer) {
   BafaMap.prototype.displayCentre(town, layer);
   // find number of trainings in town
   var townTrainings = trainings.find(function(training) { return training["code_insee"] === town.properties["insee"]; });
-  if (townTrainings && (townTrainings["bafa"] !== "0" || townTrainings["bafd"] !== "0")) {
+  if (townTrainings) {
     // display bafa and bafd trainings in a tooltip
     layer.bindTooltip("<div class='bafa-tooltip'>" + townTrainings["bafa"] + "</div><div class='bafd-tooltip'>" + townTrainings["bafd"] + "</div>", {
       permanent: true,
@@ -104,7 +104,7 @@ BafaMap.prototype.resetFeature = function(e) {
 
 BafaMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["BafaMap"] + "</h4>"
+  info._div.innerHTML = "<h4 class='title'>" + titles["BafaMap"] + "</h4>"
   + (properties ? properties["code_insee"] + " " + properties["nom"] : "<span class='bafa'>BAFA</span>  |  <span class='bafd'>BAFD</span>")
   + "<br/><br/>"
   + "Stagiaires par département <span class='legend'></span>";

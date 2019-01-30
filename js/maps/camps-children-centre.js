@@ -16,7 +16,7 @@ CampsChildrenCentreMap.prototype.onEachTown = function(town, layer) {
   CampsChildrenCentreMap.prototype.displayCentre(town, layer);
   // find number of camps and children in town
   var townCampsAndChildren = campsChildrenCentre.find(function(element) { return element["code_insee"] === town.properties["insee"]; });
-  if (townCampsAndChildren && townCampsAndChildren["camps"] !== "0") {
+  if (townCampsAndChildren) {
     // custom direction
     var direction = "right";
     if      (town.properties["insee"] === "65017") direction = "left";
@@ -38,6 +38,6 @@ CampsChildrenCentreMap.prototype.styleTown = function(town) {
 
 CampsChildrenCentreMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsChildrenCentreMap"] + "</h4>"
+  info._div.innerHTML = "<h4 class='title'>" + titles["CampsChildrenCentreMap"] + "</h4>"
     + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants");
 }

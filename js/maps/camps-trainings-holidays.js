@@ -22,11 +22,7 @@ CampsTrainingsHolidaysMap.prototype.onEachTown = function(town, layer) {
   CampsTrainingsHolidaysMap.prototype.displayCentre(town, layer);
   // find camps, trainings and holidays in town
   var townCampsTrainingsHolidays = campsTrainingsHolidays.find(function(element) { return element["code_insee"] === town.properties["insee"]; });
-  if (townCampsTrainingsHolidays 
-    && (townCampsTrainingsHolidays["camps"] !== "0"
-      || townCampsTrainingsHolidays["bafa"] !== "0"
-      || townCampsTrainingsHolidays["bafd"] !== "0"
-      || townCampsTrainingsHolidays["sejours"] !== "0")) {
+  if (townCampsTrainingsHolidays) {
     // custom direction
     var direction = "right";
     if (town.properties["insee"] === "63463") direction = "left";
@@ -54,7 +50,7 @@ CampsTrainingsHolidaysMap.prototype.styleTown = function(town) {
 
 CampsTrainingsHolidaysMap.prototype.infoUpdate = function(properties) {
   // set title and department information (or legend by default)
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["CampsTrainingsHolidaysMap"] + "</h4>"
+  info._div.innerHTML = "<h4 class='title'>" + titles["CampsTrainingsHolidaysMap"] + "</h4>"
     + "<i class='fa fa-campground'></i> Camps  |  "
     + "<span class='bafa'>BAFA</span>  |  "
     + "<span class='bafd'>BAFD</span>  |  "

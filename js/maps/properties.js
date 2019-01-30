@@ -32,7 +32,8 @@ PropertiesMap.prototype.addMarker = function(property, layer, popup) {
 PropertiesMap.prototype.addTooltip = function(property, layer) {
   // custom direction
   var direction = "top";
-  if      (property["nom"] === "Bécours")             direction = "left";
+  if      (property["nom"] === "Argol")               direction = "right";
+  else if (property["nom"] === "Bécours")             direction = "left";
   else if (property["nom"] === "Blausasc")            direction = "right";
   else if (property["nom"] === "Bled Limoges")        direction = "right";
   else if (property["nom"] === "Bordeaux Mouneyra")   direction = "right";
@@ -100,7 +101,7 @@ PropertiesMap.prototype.styleTown = function(town) {
 
 PropertiesMap.prototype.infoUpdate = function(properties) {
   // set title
-  infos[viewId]._div.innerHTML = "<h4 class='title'>" + titles["PropertiesMap"] + "</h4>"
+  info._div.innerHTML = "<h4 class='title'>" + titles["PropertiesMap"] + "</h4>"
     + "<span class='bureau'>• Bureau</span>    "
     + "<span class='terrain'>• Terrain</span>    "
     + "<span class='groupe'>• Groupe</span>    "

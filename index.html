@@ -45,8 +45,8 @@
         tileLayer,
         departments,
         towns,
-        features = {},
-        infos = {},
+        features,
+        info,
         viewId = "CentresMap";
 
       function initTileLayer() {
@@ -57,18 +57,15 @@
         });
       }
 
-      function setDefaultView() {
-        // France GPS coordinates
-        map.setView([47, 2], 6.4);
-      }
-
       function createMap() {
         map = L.map("map", {
           minZoom: 6.4,
           zoomDelta: 0.2,
           zoomSnap: 0
         });
-        setDefaultView();
+        // France GPS coordinates
+        map.setView([47, 2], 6.4);
+        // add tile layer
         map.addLayer(tileLayer);
       }
 
@@ -116,7 +113,7 @@
         });
       }
 
-      function removeInfoControl(info) {
+      function removeInfoControl() {
         if (info) {
           info.remove();
         }
@@ -126,9 +123,7 @@
         // remove layers
         removeLayers();
         // remove info control
-        removeInfoControl(infos[viewId]);
-        // reset view
-        setDefaultView();
+        removeInfoControl();
       }
 
       function loadView(viewId) {
@@ -137,12 +132,12 @@
       }
 
       function updateMap() {
-        features[viewId].addTo(map);
-        infos[viewId].addTo(map);
+        features.addTo(map);
+        info.addTo(map);
       }
 
       function selectMap(viewId) {
-        resetMap(viewId);
+        resetMap();
         loadView(viewId);
         updateMap();
       }
