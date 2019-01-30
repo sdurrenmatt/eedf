@@ -41,6 +41,7 @@
     <script src="js/maps/camps-children-centre.js"></script>
     <script src="js/maps/camps-children-department.js"></script>
     <script src="js/maps/camps-trainings-holidays.js"></script>
+    <script src="js/maps/utility.js"></script>
     <script type="text/javascript">
       var map,
         tileLayer,
@@ -96,7 +97,7 @@
           selectMap("HolidayMap");
         }, titles["HolidayMap"]).addTo(map);
         // Camps et enfants par centre
-        L.easyButton("fa-child", function() {
+        L.easyButton("fa-baby", function() {
           selectMap("CampsChildrenCentreMap");
         }, titles["CampsChildrenCentreMap"]).addTo(map);
         // Camps et enfants par département
@@ -107,6 +108,10 @@
         L.easyButton("fa-star-of-life", function() {
           selectMap("CampsTrainingsHolidaysMap");
         }, titles["CampsTrainingsHolidaysMap"]).addTo(map);
+        // Utilité associative des centres de 2015 à 2018
+        L.easyButton("fa-star", function() {
+          selectMap("UtilityMap");
+        }, titles["UtilityMap"]).addTo(map);
       }
 
       function removeLayers() {
@@ -155,7 +160,7 @@
         // add icons to choose the view
         addIcons();
         // default selection
-        selectMap("BafaMap");
+        selectMap("SalesMap");
       });
     </script>
   </body>

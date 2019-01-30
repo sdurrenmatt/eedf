@@ -22,7 +22,8 @@ CampsChildrenCentreMap.prototype.onEachTown = function(town, layer) {
     if      (town.properties["insee"] === "65017") direction = "left";
     else if (town.properties["insee"] === "81201") direction = "left";
     // display camps and children in a tooltip
-    layer.bindTooltip("<div class='camps-tooltip'><i class='fas fa-campground'></i> " + townCampsAndChildren["camps"] + "</div><div class='children-tooltip'><i class='fas fa-child'></i> " + townCampsAndChildren["enfants"] + "</div>", {
+    layer.bindTooltip("<div class='camps-tooltip'><i class='fas fa-campground'></i> " + townCampsAndChildren["camps"] + "</div>"
+        + "<div class='children-tooltip'><i class='fas fa-child'></i> " + townCampsAndChildren["enfants"] + "</div>", {
       permanent: true,
       direction: direction
     });

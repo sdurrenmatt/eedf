@@ -33,10 +33,12 @@ SalesMap.prototype.addMarker = function(sale, layer, popup) {
 
 SalesMap.prototype.addTooltip = function(sale, layer) {
   // custom direction
-  var direction = "right";
-  if      (sale["nom"] === "Clermont Ferrand")        direction = "left";
-  else if (sale["nom"] === "Saint Aubin des Forges")  direction = "bottom";
-  else if (sale["nom"] === "Trans en Provence")       direction = "bottom";
+  var direction = "bottom";
+  if      (sale["nom"] === "Chamilly")          direction = "right";
+  else if (sale["nom"] === "Clermont Ferrand")  direction = "left";
+  else if (sale["nom"] === "Méluzien Magny")    direction = "right";
+  else if (sale["nom"] === "Nice")              direction = "right";
+  else if (sale["nom"] === "Trans en Provence") direction = "bottom";
   layer.bindTooltip(sale["nom"], {
     permanent: true, 
     interactive: true,

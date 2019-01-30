@@ -38,5 +38,6 @@ const titles = {
   "HolidayMap": "Séjours SV en 2018",
   "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
   "CampsChildrenDepartmentMap": "Camps et enfants par départment en 2018",
-  "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018"
+  "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018",
+  "UtilityMap": "Utilité associative des centres de 2015 à 2018"
 };
