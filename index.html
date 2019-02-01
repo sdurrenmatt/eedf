@@ -34,6 +34,7 @@
     <script src="js/maps/eedf.js"></script>
     <script src="js/maps/properties.js"></script>
     <script src="js/maps/sales.js"></script>
+    <script src="js/maps/locals.js"></script>
     <script src="js/maps/centres.js"></script>
     <script src="js/maps/camps.js"></script>
     <script src="js/maps/bafa.js"></script>
@@ -80,31 +81,35 @@
         L.easyButton("fa-euro-sign", function() {
           selectMap("SalesMap");
         }, titles["SalesMap"]).addTo(map);
-        // Centres bénévoles et CPN
+        // Groupes locaux et centres
+        L.easyButton("fa-map-pin", function() {
+          selectMap("LocalsMap");
+        }, titles["LocalsMap"]).addTo(map);
+        // Centres
         L.easyButton("fa-home", function() {
           selectMap("CentresMap");
         }, titles["CentresMap"]).addTo(map);
-        // Camps par département
+        // Camps par département en 2018
         L.easyButton("fa-campground", function() {       
           selectMap("CampsMap");
         }, titles["CampsMap"]).addTo(map);
-        // Stages par centre
+        // Stages par centre en 2018
         L.easyButton("fa-chalkboard-teacher", function() {
           selectMap("BafaMap");
         }, titles["BafaMap"]).addTo(map);
-        // Séjours par centre
+        // Séjours SV par centre en 2018
         L.easyButton("fa-sun", function() {
           selectMap("HolidayMap");
         }, titles["HolidayMap"]).addTo(map);
-        // Camps et enfants par centre
+        // Camps et enfants par centre en 2018
         L.easyButton("fa-baby", function() {
           selectMap("CampsChildrenCentreMap");
         }, titles["CampsChildrenCentreMap"]).addTo(map);
-        // Camps et enfants par département
+        // Camps et enfants par département en 2018
         L.easyButton("fa-child", function() {
           selectMap("CampsChildrenDepartmentMap");
         }, titles["CampsChildrenDepartmentMap"]).addTo(map);
-        // Camps, stages et séjour par centre
+        // Camps, stages et séjour par centre en 2018
         L.easyButton("fa-star-of-life", function() {
           selectMap("CampsTrainingsHolidaysMap");
         }, titles["CampsTrainingsHolidaysMap"]).addTo(map);
@@ -160,7 +165,7 @@
         // add icons to choose the view
         addIcons();
         // default selection
-        selectMap("SalesMap");
+        selectMap(viewId);
       });
     </script>
   </body>

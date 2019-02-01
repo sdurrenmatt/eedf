@@ -11,7 +11,7 @@ PropertiesMap.prototype.filterTowns = function(town) {
   return !!properties.find(function(property) { return property["code_insee"] === town.properties["insee"]; });
 }
 
-PropertiesMap.prototype.popupCentre = function(property, town, layer) {
+PropertiesMap.prototype.popupProperty = function(property, town, layer) {
   return L.popup({
     className: "property-popup"
   }).setLatLng(layer.getBounds().getCenter())
@@ -83,7 +83,7 @@ PropertiesMap.prototype.onEachTown = function(town, layer) {
   // find property in town
   var property = properties.find(function(property) { return property["code_insee"] === town.properties["insee"]; });
   // create popup
-  var popup = PropertiesMap.prototype.popupCentre(property, town, layer);
+  var popup = PropertiesMap.prototype.popupProperty(property, town, layer);
   // add circle marker
   PropertiesMap.prototype.addMarker(property, layer, popup);
   // add tooltip

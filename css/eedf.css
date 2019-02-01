@@ -73,6 +73,10 @@ body {
   color: #960018;
 }
 
+.groupe-local {
+  color: #960018;
+}
+
 p[class^="property-"] {
   padding: 5px;
   font: 12px "Open Sans", sans-serif;
@@ -113,6 +117,11 @@ p.property-terrain {
 
 p.property-en-vente {
   width: 60px;
+  background-color: #960018;
+}
+
+p.property-groupe-local {
+  width: 120px;
   background-color: #960018;
 }
 

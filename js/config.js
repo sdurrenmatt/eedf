@@ -32,6 +32,7 @@ const spinConfig = {
 const titles = {
   "PropertiesMap": "Biens immobiliers",
   "SalesMap": "Ventes réalisées depuis 2013",
+  "LocalsMap": "Groupes locaux et centres",
   "CentresMap": "Centres",
   "CampsMap": "Camps par département en 2018",
   "BafaMap": "Stages par centre en 2018",
