@@ -32,13 +32,13 @@ const spinConfig = {
 const titles = {
   "PropertiesMap": "Biens immobiliers",
   "SalesMap": "Ventes réalisées depuis 2013",
-  "LocalsMap": "Groupes locaux et centres",
   "CentresMap": "Centres",
+  "LocalsMap": "Groupes locaux et centres",
   "CampsMap": "Camps par département en 2018",
   "BafaMap": "Stages par centre en 2018",
   "HolidayMap": "Séjours SV en 2018",
   "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
-  "CampsChildrenDepartmentMap": "Camps et enfants par départment en 2018",
+  "CampsChildrenDepartmentMap": "Camps et enfants par département en 2018",
   "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018",
   "UtilityMap": "Utilité associative des centres de 2015 à 2018"
 };
