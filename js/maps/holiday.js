@@ -34,8 +34,6 @@ HolidayMap.prototype.onEachDepartment = function(department, layer) {
 HolidayMap.prototype.styleDepartment = function(department) {
   // find number of vacationers in department
   var departmentVacationers = vacationers.find(function(vacationer) { return vacationer["code_insee"] === department.properties["code_insee"]; });
-  var minNumber = Math.min.apply(Math, vacationers.map(function(vacationer) { return vacationer["total"]; }));
-  var maxNumber = Math.max.apply(Math, vacationers.map(function(vacationer) { return vacationer["total"]; }));
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")

@@ -41,8 +41,6 @@ CampsChildrenDepartmentMap.prototype.onEachDepartment = function(department, lay
 CampsChildrenDepartmentMap.prototype.styleDepartment = function(department) {
   // find number of children in department
   var departmentCampsAndChildren = campsChildrenDepartment.find(function(element) { return element["code_insee"] === department.properties["code_insee"]; });
-  var minNumber = Math.min.apply(Math, campsChildrenDepartment.map(function(element) { return element["enfants"]; }));
-  var maxNumber = Math.max.apply(Math, campsChildrenDepartment.map(function(element) { return element["enfants"]; }));
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")
