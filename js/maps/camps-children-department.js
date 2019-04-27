@@ -46,7 +46,7 @@ CampsChildrenDepartmentMap.prototype.styleDepartment = function(department) {
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")
-    .setNumberRange(minNumber, maxNumber);
+    .setNumberRange(7, 240);
   if (!departmentCampsAndChildren) {
     // no data
     return {
@@ -85,5 +85,5 @@ CampsChildrenDepartmentMap.prototype.infoUpdate = function(properties) {
   info._div.innerHTML = "<h4 class='title'>" + titles["CampsChildrenDepartmentMap"] + "</h4>"
     + (properties ? properties["code_insee"] + " " + properties["nom"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants")
     + "<br/><br/>"
-    + "Enfants <span class='legend'></span>";;
+    + "Enfants <span class='legend'></span>";
 }

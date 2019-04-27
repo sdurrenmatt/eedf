@@ -40,5 +40,7 @@ const titles = {
   "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
   "CampsChildrenDepartmentMap": "Camps et enfants par département en 2018",
   "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018",
-  "UtilityMap": "Utilité associative des centres de 2015 à 2018"
+  "UtilityMap": "Utilité associative des centres de 2015 à 2018",
+  "InternationalCampsMap": "Camps à l'étranger en 2018" ,
+  "InternationalHolidayMap": "Séjours à l'étranger en 2018"
 };

@@ -833,6 +833,30 @@ data.csv.utility = "code_insee,camps,bafa,bafd,sejours\n"
   + "88415,11,10,0,5\n"
   + "66188,7,2,2,2\n"
   + "90041,4,1,0,1";
+// Camps by country
+data.csv.internationalCamps = "pays,camps,enfants\n"
++ "CI,1,19\n"
++ "CL,1,10\n"
++ "CZ,1,12\n"
++ "DK,1,12\n"
++ "ES,1,13\n"
++ "HR,3,23\n"
++ "IE,1,15\n"
++ "IT,3,99\n"
++ "LK,1,7\n"
++ "MA,2,12\n"
++ "MG,1,18\n"
++ "NL,1,75\n"
++ "NP,1,10\n"
++ "RS,1,5";
+// Holiday by country
+data.csv.internationalHoliday = "pays,sejours,mineurs_handicapes,adultes_handicapes\n"
++ "IT,2,0,30\n"
++ "ES,1,0,16\n"
++ "VN,1,0,12\n"
++ "GR,1,0,15\n"
++ "HR,1,0,11\n"
++ "PT,1,0,14";
 // load data
 var properties = $.csv.toObjects(data.csv.properties);
 var sales = $.csv.toObjects(data.csv.sales);
@@ -847,3 +871,5 @@ var campsChildrenCentre = $.csv.toObjects(data.csv.campsChildrenCentre);
 var campsChildrenDepartment = $.csv.toObjects(data.csv.campsChildrenDepartment);
 var campsTrainingsHolidays = $.csv.toObjects(data.csv.campsTrainingsHolidays);
 var utility = $.csv.toObjects(data.csv.utility);
+var internationalCamps = $.csv.toObjects(data.csv.internationalCamps);
+var internationalHoliday = $.csv.toObjects(data.csv.internationalHoliday);

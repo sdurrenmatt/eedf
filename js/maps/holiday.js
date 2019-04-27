@@ -39,7 +39,7 @@ HolidayMap.prototype.styleDepartment = function(department) {
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")
-    .setNumberRange(minNumber, maxNumber);
+    .setNumberRange(18, 474);
   if (!departmentVacationers) {
     // no data
     return {

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>EEDF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/leaflet/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="css/leaflet/leaflet.easy-button.css">
+    <link rel="stylesheet" href="css/leaflet/leaflet.spin.css">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel="stylesheet" href="css/eedf.css">
+    <script src="js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery/jquery.csv.min.js"></script>
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet.awesome-markers.min.js"></script>
+    <script src="js/leaflet/leaflet.easy-button.js"></script>
+    <script src="js/leaflet/leaflet.shp.js"></script>
+    <script src="js/leaflet/leaflet.shpfile.js"></script>
+    <script src="js/leaflet/leaflet.spin.min.js"></script>
+    <script src="js/rainbowvis/rainbowvis.js"></script>
+    <script src="js/spin/spin.js"></script>
+    <!-- polyfill for IE -->
+    <script src="js/polyfills/array.find.js"></script>
+    <!-- polyfill for Edge -->
+    <script src="js/polyfills/encoding.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/maps/eedf.js"></script>
+    <script src="js/maps/international-holiday.js"></script>
+    <script src="js/maps/international-camps.js"></script>
+    <script type="text/javascript">
+      var map,
+        tileLayer,
+        countries,
+        features,
+        info,
+        viewId = "InternationalHolidayMap";
+
+      function initTileLayer() {
+        // Mapbox custom tile layer
+        tileLayer = L.tileLayer("{urlTemplate}/{z}/{x}/{y}?access_token={accessToken}", {
+          urlTemplate: mapboxConfig.urlTemplate,
+          accessToken: mapboxConfig.accessToken
+        });
+      }
+
+      function createMap() {
+        map = L.map("map", {
+          zoomDelta: 0.2,
+          zoomSnap: 0
+        });
+        // France GPS coordinates
+        map.setView([47, 2], 2.8);
+        // add tile layer
+        map.addLayer(tileLayer);
+      }
+
+      function addIcons() {
+        // Séjours à l'étranger en 2018
+        L.easyButton("fa-sun", function() {
+          selectMap("InternationalHolidayMap");
+        }, titles["InternationalHolidayMap"]).addTo(map);
+        // Camps à l'étranger en 2018
+        L.easyButton("fa-campground", function() {       
+          selectMap("InternationalCampsMap");
+        }, titles["InternationalCampsMap"]).addTo(map);
+      }
+
+      function removeLayers() {
+        map.eachLayer(function(layer) {
+          // do not remove tile layer
+          if (layer !== tileLayer) {
+            map.removeLayer(layer);
+          }
+        });
+      }
+
+      function removeInfoControl() {
+        if (info) {
+          info.remove();
+        }
+      }
+
+      function resetMap() {
+        // remove layers
+        removeLayers();
+        // remove info control
+        removeInfoControl();
+      }
+
+      function loadView(viewId) {
+        this.viewId = viewId;
+        new window[viewId]().load();
+      }
+
+      function updateMap() {
+        features.addTo(map);
+        info.addTo(map);
+      }
+
+      function selectMap(viewId) {
+        resetMap();
+        loadView(viewId);
+        updateMap();
+      }
+
+      $(function() {
+        // init tile layer
+        initTileLayer();
+        // create map
+        createMap();
+        // add icons to choose the view
+        addIcons();
+        // default selection
+        selectMap(viewId);
+      });
+    </script>
+  </body>
+</html>

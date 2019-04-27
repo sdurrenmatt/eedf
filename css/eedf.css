@@ -195,6 +195,7 @@ p.town {
   font-size: x-small;
   font-weight: bolder;
   color: rgba(0, 0, 0, 0.75);
+  text-align: center;
 }
 
 .bafa {

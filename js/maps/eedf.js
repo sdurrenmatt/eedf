@@ -58,6 +58,13 @@ EEDFMap.prototype.loadTowns = function() {
   });
 }
 
+EEDFMap.prototype.loadCountries = function() {
+  countries = new L.Shapefile("https://cors-anywhere.herokuapp.com/http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip", {
+    onEachFeature: this.onEachCountry,
+    style: this.styleCountry
+  });
+}
+
 EEDFMap.prototype.deactivateLoader = function() {
   map.once("data:loaded", function() {
     map.spin(false);

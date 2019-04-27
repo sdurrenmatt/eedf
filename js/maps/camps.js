@@ -41,12 +41,10 @@ CampsMap.prototype.onEachDepartment = function(department, layer) {
 CampsMap.prototype.styleDepartment = function(department) {
   // find number of camps in department
   var departmentCamps = camps.find(function(camp) { return camp["code_insee"] === department.properties["code_insee"]; });
-  var minNumber = Math.min.apply(Math, camps.map(function(camp) { return camp["total"]; }));
-  var maxNumber = Math.max.apply(Math, camps.map(function(camp) { return camp["total"]; }));
   // create a gradient fill
   var rainbow = new Rainbow()
     .setSpectrum("#FFF0BC", "#C72C48")
-    .setNumberRange(minNumber, maxNumber);
+    .setNumberRange(1, 13);
   if (!departmentCamps) {
     // no data
     return {
