@@ -7,8 +7,11 @@ CentresMap.prototype = Object.create(EEDFMap.prototype, {
 });
 
 CentresMap.prototype.filterTowns = function(town) {
-  // show town only if there is a centre
-  return !!centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
+  // show town only if there is an active centre
+  return !!centres.find(function(centre) { 
+    return centre["code_insee"] === town.properties["insee"]
+      && centre["actif"] === "1";
+  });
 }
 
 CentresMap.prototype.addMarker = function(centre, layer, popup) {
@@ -29,7 +32,6 @@ CentresMap.prototype.addTooltip = function(centre, layer) {
   else if (centre["nom"] === "Foucheval")   direction = "left";
   else if (centre["nom"] === "Fabian")      direction = "right";
   else if (centre["nom"] === "La Planche")  direction = "left";
-  else if (centre["nom"] === "Le Fontenil") direction = "left";
   else if (centre["nom"] === "Les Révotes") direction = "right";
   else if (centre["nom"] === "Lespone")     direction = "left";
   else if (centre["nom"] === "Queaux")      direction = "right";

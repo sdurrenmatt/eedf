@@ -37,6 +37,7 @@ const titles = {
   "CampsMap": "Répartition du nombre de camps en 2018 par département",
   "BafaMap": "Stages par centre en 2018",
   "HolidayMap": "Séjours SV en 2018",
+  "MinorHolidaysMap": "Séjours SVA Mineurs en 2018",
   "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
   "CampsChildrenDepartmentMap": "Camps et enfants par département en 2018",
   "CampsTrainingsHolidaysMap": "Camps, stages et séjours par centre en 2018",

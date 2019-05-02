@@ -29,6 +29,7 @@ CampsTrainingsHolidaysMap.prototype.onEachTown = function(town, layer) {
     else if (town.properties["insee"] === "65078") direction = "left";
     else if (town.properties["insee"] === "73306") direction = "left";
     else if (town.properties["insee"] === "81201") direction = "bottom";
+    else if (town.properties["insee"] === "85166") direction = "left";
     else if (town.properties["insee"] === "86024") direction = "left";
     // display camps, trainings and holidays in a tooltip
     layer.bindTooltip("<div class='camps-trainings-holidays-tooltip-1'><i class='fa fa-campground'></i> " + townCampsTrainingsHolidays["camps"] + "</div>"

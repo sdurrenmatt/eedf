@@ -39,6 +39,7 @@
     <script src="js/maps/camps.js"></script>
     <script src="js/maps/bafa.js"></script>
     <script src="js/maps/holiday.js"></script>
+    <script src="js/maps/minor-holidays.js"></script>
     <script src="js/maps/camps-children-centre.js"></script>
     <script src="js/maps/camps-children-department.js"></script>
     <script src="js/maps/camps-trainings-holidays.js"></script>
@@ -101,6 +102,10 @@
         L.easyButton("fa-sun", function() {
           selectMap("HolidayMap");
         }, titles["HolidayMap"]).addTo(map);
+        // Séjours SV Mineurs par centre en 2018
+        L.easyButton("far fa-sun", function() {
+          selectMap("MinorHolidaysMap");
+        }, titles["MinorHolidaysMap"]).addTo(map);
         // Camps et enfants par centre en 2018
         L.easyButton("fa-baby", function() {
           selectMap("CampsChildrenCentreMap");

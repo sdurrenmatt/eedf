@@ -9,7 +9,10 @@ LocalsMap.prototype = Object.create(EEDFMap.prototype, {
 LocalsMap.prototype.filterTowns = function(town) {
   // show town only if there is a local group or a centre
   return !!locals.find(function(local) { return local["code_insee"] === town.properties["insee"]; })
-    || !!centres.find(function(centre) { return centre["code_insee"] === town.properties["insee"]; });
+    || !!centres.find(function(centre) { 
+      return centre["code_insee"] === town.properties["insee"]
+        && centre["actif"] === "1"; 
+      });
 }
 
 LocalsMap.prototype.popupProperty = function(property, town, layer) {
