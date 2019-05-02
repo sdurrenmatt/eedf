@@ -32,9 +32,9 @@ const spinConfig = {
 const titles = {
   "PropertiesMap": "Biens immobiliers",
   "SalesMap": "Ventes réalisées depuis 2013",
-  "CentresMap": "Centres",
+  "CentresMap": "Présentation des centres bénévoles et des CPN actifs en France (dont La Planche, location)",
   "LocalsMap": "Groupes locaux et centres",
-  "CampsMap": "Camps par département en 2018",
+  "CampsMap": "Répartition du nombre de camps en 2018 par département",
   "BafaMap": "Stages par centre en 2018",
   "HolidayMap": "Séjours SV en 2018",
   "CampsChildrenCentreMap": "Camps et enfants par centre en 2018",
