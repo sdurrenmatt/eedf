@@ -15,10 +15,10 @@ InternationalCampsMap.prototype.loadFeatures = function() {
 
 InternationalCampsMap.prototype.onEachCountry = function(country, layer) {
   // find camps in country
-  var countryCamps = internationalCamps.find(function(camp) { return camp["pays"] === country.properties["ISO2"]; });
+  var countryCamps = internationalCamps.find(function(camp) { return camp["pays"] === country.properties["iso2"]; });
   if (countryCamps && countryCamps["camps"] !== "0") {
     // add marker
-    L.marker([country.properties["LAT"], country.properties["LON"]], {
+    L.marker([country.properties["lat"], country.properties["lon"]], {
       icon: L.divIcon({
         className: "totals-tooltip",
         iconSize: [100, 30],
@@ -36,7 +36,7 @@ InternationalCampsMap.prototype.onEachCountry = function(country, layer) {
 
 InternationalCampsMap.prototype.styleCountry = function(country) {
   // find camps in country
-  var countryCamps = internationalCamps.find(function(camp) { return camp["pays"] === country.properties["ISO2"]; });
+  var countryCamps = internationalCamps.find(function(camp) { return camp["pays"] === country.properties["iso2"]; });
   if (!countryCamps) {
     // no data
     return {
@@ -72,5 +72,5 @@ InternationalCampsMap.prototype.highlightFeature = function(e) {
 
 InternationalCampsMap.prototype.infoUpdate = function(properties) {
   info._div.innerHTML = "<h4 class='title'>" + titles["InternationalCampsMap"] + "</h4>"
-    + (properties ? properties["NAME"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants");
+    + (properties ? properties["name"] : "<i class='fas fa-campground'></i> Camps    <i class='fas fa-child'></i> Enfants");
 }

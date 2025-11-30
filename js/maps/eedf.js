@@ -45,13 +45,13 @@ EEDFMap.prototype.loadFeatures = function() {
 }
 
 EEDFMap.prototype.loadDepartments = function() {
-  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+  departments = new L.Shapefile("shp/departements-20180101-shp.zip", {
     style: this.styleDepartment
   });
 }
 
 EEDFMap.prototype.loadTowns = function() {
-  towns = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/communes-20140629-100m-shp.zip", {
+  towns = new L.Shapefile("shp/communes-20140629-100m-shp.zip", {
     filter: this.filterTowns,
     onEachFeature: this.onEachTown,
     style: this.styleTown
@@ -59,7 +59,7 @@ EEDFMap.prototype.loadTowns = function() {
 }
 
 EEDFMap.prototype.loadCountries = function() {
-  countries = new L.Shapefile("https://cors-anywhere.herokuapp.com/http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip", {
+  countries = new L.Shapefile("shp/TM_WORLD_BORDERS-0.3.zip", {
     onEachFeature: this.onEachCountry,
     style: this.styleCountry
   });

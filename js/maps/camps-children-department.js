@@ -14,7 +14,7 @@ CampsChildrenDepartmentMap.prototype.loadFeatures = function() {
 }
 
 CampsChildrenDepartmentMap.prototype.loadDepartments = function() {
-  departments = new L.Shapefile("http://osm13.openstreetmap.fr/~cquest/openfla/export/departements-20180101-shp.zip", {
+  departments = new L.Shapefile("shp/departements-20180101-shp.zip", {
     onEachFeature: this.onEachDepartment,
     style: this.styleDepartment
   });

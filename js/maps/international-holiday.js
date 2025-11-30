@@ -15,10 +15,10 @@ InternationalHolidayMap.prototype.loadFeatures = function() {
 
 InternationalHolidayMap.prototype.onEachCountry = function(country, layer) {
   // find holiday in country
-  var countryHoliday = internationalHoliday.find(function(holiday) { return holiday["pays"] === country.properties["ISO2"]; });
+  var countryHoliday = internationalHoliday.find(function(holiday) { return holiday["pays"] === country.properties["iso2"]; });
   if (countryHoliday && countryHoliday["sejours"] !== "0") {
     // add marker
-    L.marker([country.properties["LAT"], country.properties["LON"]], {
+    L.marker([country.properties["lat"], country.properties["lon"]], {
       icon: L.divIcon({
         className: "totals-tooltip",
         iconSize: [100, 30],
@@ -36,7 +36,7 @@ InternationalHolidayMap.prototype.onEachCountry = function(country, layer) {
 
 InternationalHolidayMap.prototype.styleCountry = function(country) {
   // find camps in country
-  var countryHoliday = internationalHoliday.find(function(holiday) { return holiday["pays"] === country.properties["ISO2"]; });
+  var countryHoliday = internationalHoliday.find(function(holiday) { return holiday["pays"] === country.properties["iso2"]; });
   if (!countryHoliday) {
     // no data
     return {
@@ -72,5 +72,5 @@ InternationalHolidayMap.prototype.highlightFeature = function(e) {
 
 InternationalHolidayMap.prototype.infoUpdate = function(properties) {
   info._div.innerHTML = "<h4 class='title'>" + titles["InternationalHolidayMap"] + "</h4>"
-    + (properties ? properties["NAME"] : "<i class='fas fa-sun'></i> Séjours    <i class='fas fa-wheelchair'></i> Adultes handicapés");
+    + (properties ? properties["name"] : "<i class='fas fa-sun'></i> Séjours    <i class='fas fa-wheelchair'></i> Adultes handicapés");
 }
